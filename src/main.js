@@ -332,7 +332,7 @@ function createWindow() {
     height:768,
     minHeight:768,
     minWidth:1096,
-    frame:true,
+    frame:false,
     icon:"icon.ico",
     webPreferences: {
       nodeIntegration:true,
@@ -380,7 +380,7 @@ function createWindow() {
         contextIsolation:false,
       }});
     
-    // child.removeMenu();
+    child.removeMenu();
     child.loadFile('src/ui/consulta.html');
     child.show();
 

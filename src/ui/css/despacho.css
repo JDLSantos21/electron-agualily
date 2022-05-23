@@ -137,12 +137,23 @@
   display:none;
 }
 
+.listaPedido--title-container{
+  background-color: #E6F3FF;
+  width:100%;  
+  position: sticky;
+  top:0;
+  z-index: 1000;
+  transition: 0.3s ;
+}
+
+
 .listaPedidos--title{
   font-weight:bold;
   text-align: center;
   margin-top:10px;
   text-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
   color: rgba(0, 65, 163, 0.70);
+  margin:0;
 }
 
 .acordeon--estado-0{
@@ -170,8 +181,6 @@
 .finishP-btn:hover{
   background-color: rgba(20, 104, 214, 0.699);
 }
-
-
 
 
 

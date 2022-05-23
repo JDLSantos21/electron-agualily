@@ -22,6 +22,11 @@
   display:flex;
   justify-content: center;
   align-items:center;
+  transition: 0.3s ease;
+}
+
+.acordeon--title:hover{
+  background-color: rgba(240, 255, 255, 0.466);
 }
 
 .acordeon-title-full{

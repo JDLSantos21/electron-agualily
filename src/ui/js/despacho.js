@@ -181,7 +181,7 @@ ipc.on('dataPedidosProducts',async (event,dataProducts)=>{
              <div class="cliente-data--pedido">
                <p class="sub-title">Pedido: <span class="data">${pedido.ID}</span></p>
                <p class="sub-title">Cliente: <span class="data">${pedido.cliente}</span></p>
-               <p class="sub-title">Fecha: <span class="data">${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</span></p>
+               <p class="sub-title">Fecha y Hora: <span class="data">${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</span></p>
                <p class="sub-title">Dirección: <span class="data">${pedido.direccion}</span></p>
                ${pedido.estado == 1 ? `<button class='finishP-btn' id='${pedido.ID}'>Terminar Pedido</button>` : ``}
                <table class="table-show--pedidos">
@@ -219,7 +219,7 @@ setInterval(()=>{
         }
 
         Swal.fire({
-          title: 'Finalizar el pedido?',
+          title: 'Finalizar Pedido?',
           text: "¡Cuidado! Este cambio es permanente!",
           icon: 'warning',
           showCancelButton: true,

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/consulta.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <main class="main-consulta">
+
+    <h1 class="title">CONSULTAR REGISTROS</h1>
+
+    <div class="box-consult">   
+
+        <form>
+        
+    <div class="consult-date bg-primary bg-gradient shadow-lg p-3 mb-5 rounded">
+        <h4 class="cd-subtitle">Escoger fecha</h4>
+        <label for="" class="cd-subtitle">Desde: </label>
+        <input class="form-control" type="datetime-local" name="idate" id="firstDate">
+        <label for="" class="cd-subtitle">Hasta: </label>
+        <input class="form-control" type="datetime-local" name="fdate" id="lastDate">
+    </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control input-ficha" id="consultFicha" placeholder="name@example.com">
+            <label class="input-ficha" for="floatingInput" id="ficha">Ficha</label>
+    </div>
+    
+        <button class="btn btn-info" id="cBtn">Consultar</button>
+        </form>
+
+    </div>
+
+<div class="table-content" >
+<table class="table table-borderless">
+<tr class="tr">
+   <th class="th">Ficha</th>
+   <th class="th">Chofer</th>
+   <th class="th">Kilometraje</th>
+   <th class="th">Galones</th>
+   <th class="th">Fecha y Hora</th>
+   <th class="th">Registrado por:</th>
+   <th class="th">Comentario</th>
+</tr>
+
+<tbody id="tbody">
+
+</tbody>
+
+</table> 
+</div>
+</main>
+    
+    
+  <script src="https://kit.fontawesome.com/91ab5d32e4.js" crossorigin="anonymous"></script>
+  <script src="js/consulta.js"></script>
+</body>
+</html>

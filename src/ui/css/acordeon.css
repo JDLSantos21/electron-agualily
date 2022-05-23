@@ -1,0 +1,87 @@
+.acordeon{
+  padding: 1rem;
+  width:100%;
+  background-color: rgba(188, 219, 248, 0.432);
+}
+
+.acordeon--item{
+  border-radius:5px;
+  margin-bottom:1rem;
+}
+
+.acordeon--title{
+  background-color: azure;
+  font-size: 16px;
+  width:100%;
+  padding: 1rem;
+  border-radius:4px;
+  margin-bottom:0.5rem;
+  box-shadow:0px 1px 20px -5px rgba(29, 155, 240, 0.466);
+  text-align: center;
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.acordeon-title-full{
+  margin:0;
+  font-size:17px;
+}
+
+.acordeon--timeago{
+  margin:0;
+  position: absolute;
+  bottom:0px;
+  right: 5px;
+  font-size:14px;
+  color: rgb(114, 110, 110);
+}
+
+.acordeon--estado{
+  margin:0;
+  position: absolute;
+  bottom:0;
+  left: 5px;
+  font-size: 14px;
+  color: rgb(114, 110, 110);
+}
+
+.acordeon--content{
+  background-color: rgb(19, 39, 212);
+  overflow: hidden;
+  transition: all 0.4s ease; 
+  height:0;
+  border-radius: 4px;
+  box-shadow: 5px 5px 15px 0px #00000017;
+
+}
+
+/* ACORDEON DATA  */
+
+.cliente-data--pedido{
+  background-color: aliceblue;
+  padding: 1rem;
+  position: relative;
+}
+
+.table-show--pedidos{
+  width:100%;
+  text-align: center;
+}
+
+.sub-title{
+  font-weight: bold;
+}
+
+.data{
+  font-weight: normal;
+}
+
+.th-pedidos--show{
+  color: rgb(130, 167, 245);
+}
+
+.tr-pedidos--show{
+  border: 1px solid rgba(0, 0, 0, 0.322);
+}

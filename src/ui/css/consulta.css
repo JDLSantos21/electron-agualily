@@ -1,0 +1,112 @@
+body{
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.main-consulta{
+    background-color:rgb(230, 243, 255);
+    height:100vh;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    margin: 0;
+    text-align:center;
+    padding-top:20px;
+    padding-bottom:50px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+    color:rgba(0, 65, 163, 0.70);
+    font-weight:bold;
+}
+
+.cd-subtitle{
+    color: cornsilk;
+}
+
+.box-consult{
+width:100%;
+display:flex;
+justify-content: center;
+}
+
+.box-consult form{
+width:80%;
+display:flex;
+align-items: center;
+justify-content: center;
+}
+
+.consult-date{
+    width:350px;
+    border-radius:20px;
+    height:180px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+}
+
+.consult-date input{
+    width:85%;
+}
+
+
+.input-ficha{
+    margin-left:25px;
+    width:150px;
+}
+
+.label{
+    font-size:25px;
+}
+
+.select{
+    outline:none;
+    border-radius:10px;
+    width:100px;
+    height:30px;
+    border: none;
+    /* appearance: none; */
+    background-color: transparent;
+    font-size:20px;
+}
+
+.option{
+    font-size:16px;
+}
+
+.btn-info{
+    color: #fff;
+}
+
+.btn-success:hover{
+    transition:0.3s;
+    color: rgb(252, 247, 247);
+}
+
+/* TABLE */
+
+.table-content{
+    max-height:70%; overflow:scroll;
+} 
+
+ .table-content::-webkit-scrollbar{
+    display:none;
+}  
+
+.btn{
+    position:relative;
+    bottom:7px;
+    margin-left:25px;
+    width:100px;
+    height:50px;
+}
+
+
+.table{
+    text-align:center;
+}
+

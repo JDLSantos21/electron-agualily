@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agua Lily</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js
+  "></script>
+  <link rel="stylesheet" href="css/disponibilidad.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/topbar.css">
+  <link rel="stylesheet" href="css/incidencias.css">
+  <link rel="stylesheet" href="css/despacho.css">
+  <link rel="stylesheet" href="css/acordeon.css">
+
+</head>
+<body>
+
+<header class="top-bar">
+
+<div class="exp-menu--container" id="sideBarBtn">
+        <i class="fa-solid fa-bars"></i>
+</div>
+
+<div class="title--container">
+        <img src="../images/logo.png" class="window-logo" alt="logo">
+        <h1 class="window-title">Agua & Hielo Lily</h1>
+</div>
+
+<div class="mmc-icons">
+        <i class="fa-solid fa-minus" id="minBtn"></i>
+        <i class="fa-regular fa-window-maximize" id="maxBtn"></i>
+        <i class="fa-solid fa-xmark closeBtn" id="closeBtn"></i>
+</div>
+
+</header>
+
+<div class="sidebar" id="sidebar">
+
+        <div class="sidebar-item">
+
+                <a href="#" class="sidebar-link" id="sidebarCombustible"> 
+                        <span class="sidebar-icons">
+                                <i class="fa-solid fa-gas-pump"></i>
+                        </span>
+
+                        <span class="sidebar-menu-title">Combustible</span>
+                </a>
+        </div>
+        <div class="sidebar-item">
+                <a href="#" class="sidebar-link" id="sidebarIncidencias"> 
+                        <span class="sidebar-icons">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                        </span>
+
+                        <span class="sidebar-menu-title">Tickets</span>
+                </a>
+        </div>
+
+        <div class="sidebar-item">
+                <a href="#" class="sidebar-link" id="sidebarDespacho"> 
+                        <span class="sidebar-icons">
+                                <i class="fa-solid fa-truck-ramp-box"></i>
+                        </span>
+
+                        <span class="sidebar-menu-title">Despacho</span>
+                </a>
+        </div>
+
+        <div class="sidebar-item">
+                <a href="#" class="sidebar-link"> 
+                        <span class="sidebar-icons">
+                                <i class="fa-solid fa-toolbox"></i>
+                        </span>
+
+                        <span class="sidebar-menu-title">Mantenimiento</span>
+                </a>
+        </div>
+
+</div>
+
+<div class="form-content" id="formContent">
+
+<button id="btnConsulta" class="btnConsulta">Consultar</button>
+
+<div class="category-title">
+    <h2 class="category-title__text">
+        REGISTRAR CONSUMO
+    </h2>
+</div>
+
+<!-- <div class="historico--tanque-container">
+  <h3 class="historico--tanque-title">Tanque Historico</h3>
+  <p class="historico--tanque" id="historico--tanque">192000</p>
+</div> -->
+
+<button class="btnDisponibilidad" id="btnDisponibilidad">Disponibilidad <i class="fa-solid fa-arrow-right"></i></button>
+
+<form class="form" method="POST" id="RegCombustible">
+
+<div class="inputs-form__content">
+<div class="form-floating mb-1 inputs-content">
+    <select name="ficha" id="ficha" class="form-select inputs" aria-label="Default select example">
+        <option value="select">Seleccionar</option>
+        <option value="1">F-1</option>
+        <option value="2">F-2</option>
+        <option value="3">F-3</option>
+        <option value="4">F-4</option>
+        <option value="5">F-5</option>
+        <option value="6">F-6</option>
+        <option value="7">F-7</option>
+        <option value="8">F-8</option>
+        <option value="9">F-9</option>
+        <option value="10">F-10</option>
+        <option value="11">F-11</option>
+        <option value="12">F-12</option>
+        <option value="13">F-13</option>
+        <option value="14">F-14</option>
+        <option value="15">F-15</option>
+        <option value="16">F-16</option>
+        <option value="24">F-24</option>
+        <option value="100">Camión Hielo</option>
+        <option value="200">Cama Corta</option>
+        <option value="300">Planta</option>
+        <option value="400">Otro</option>
+
+    </select>
+    <label for="floatingInput">Ficha</label>
+
+</div>
+    <div class="form-floating mb-1 inputs-content">
+            <input type="text" name="chofer" class="form-control inputs" id="chofer" placeholder="name@example.com">
+            <label for="floatingInput">Chofer</label>
+    </div>
+
+    <div class="form-floating mb-1 inputs-content">
+            <input type="text" name="kilometraje" class="form-control inputs" id="kilometraje"  placeholder="name@example.com">
+            <label for="floatingInput">Kilometraje</label>
+    </div>
+    <!-- <div class="form-floating mb-1 inputs-content">
+            <input type="text" class="form-control inputs" id="tanqueActual"  placeholder="name@example.com">
+            <label for="floatingInput">Tanque Actual</label>
+    </div> -->
+    <div class="form-floating mb-1 inputs-content">
+            <input type="text" name="galones" class="form-control inputs" id="galones"  placeholder="name@example.com">
+            <label for="floatingInput">Galones</label>
+    </div>
+    <div class="form-floating mb-1 inputs-content">
+            <input type="datetime-local" name="fecha" class="form-control inputs" id="fecha"  placeholder="name@example.com">
+            <label for="floatingInput">Fecha</label>
+    </div>
+    <div class="form-floating mb-1 inputs-content">
+            <input type="text" name="firma" class="form-control inputs" id="firma"  placeholder="name@example.com">
+            <label for="floatingInput">Registrado Por:</label>
+    </div>
+    <div class="form-floating mb-1 inputs-content">
+        <textarea name="comment" id="comment" style="height: 100px" class="form-control inputs textarea" cols="30" rows="10" placeholder="name@example.com"></textarea>
+            <label for="floatingTextarea">Comentario (Opcional)</label>
+    </div>
+
+    <div class="btns mt-3">
+        <button  id="btn-send" class="btn btn-success regBtns" name="registrar">Registrar</button>
+     <button type="reset" class="btn btn-warning regBtns">Limpiar</button>
+     <!-- <button id="btnConsulta"><i class="fa-solid fa-folder-open"></i></button> -->
+ 
+    </div>
+</div>
+
+</form>
+
+</div>
+
+<div class="disp-container" id="dispContainer">
+
+<button class="goRegButton" id="goRegButton"> <i class="fa-solid fa-arrow-left"></i> Registro</button>
+
+
+<div class="information">
+        <h1 class="reab-title">DISPONIBILIDAD</h1>
+                
+            <div class="disp-content shadow-lg p-3 rounded">
+                
+               <div class="disp-content--data">
+                <div class="galonesDisp">
+                 <h3 class="disponible ">Galones Disponibles</h3>
+                 <div class="disp-result shadow p-3 mb-3 bg-body rounded" id="gDisponibles">
+                  </div>
+                </div>
+        
+                        <div class="galonesGast">
+                                <h3 class="gastado">Galones Consumidos</h3>
+                                <div class="gast-result shadow p-3 mb-3 bg-body rounded" id="gGastados">
+                                </div>
+                        </div>
+                </div>
+
+                        
+                        <form class="treset-form">
+                        
+                        <div class="input-pass_reab form-floating mb-1">
+                            <input type="password" name="pass" class="form-control" id="inputDispReset" required placeholder="name@example.com" >
+                            <label for="floatingInput">Contraseña</label>
+                        </div>
+                        <button class="btn btn-danger" id="btnDispReset">Resetear</button>
+                        </form>
+                        
+                    </div>        
+           </div>
+
+        <div class="form-content_reab">
+
+                <form action="enviarnaob.php" class="form-reab" method="POST">
+            
+                    <div class="form-floating mb-1 inputs-disp-container">
+                        <input type="text" name="reabcantidad" class="form-control form-reab--inputs" id="reabCantidad" required placeholder="name@example.com"  required>
+                        <label for="floatingInput">Cantidad Recibida en Galones</label>
+                    </div>
+            
+                    <div class="form-floating mb-1 inputs-disp-container">
+                        <input type="datetime-local" name="reabfecha" id="reabFecha" required class="form-control form-reab--inputs" required>
+                        <label for="floatingInput">Fecha</label>
+                    </div>
+                    
+                    <div class="form-floating mb-1 inputs-disp-container">
+                        <input type="text" name="reabFirma" class="form-control form-reab--inputs" id="reabFirma" required placeholder="name@example.com"  required>
+                        <label for="floatingInput">Nombre Recibidor</label>
+                    </div>
+            
+                    <div class="form-floating mb-1 inputs-disp-container">
+                        <input type="password" name="inputRegPass" class="form-control form-reab--inputs" id="inputRegPass" required placeholder="name@example.com" required>
+                        <label for="floatingInput">Contraseña</label>
+                    </div>
+                    
+                    <div class="btns-reab mt-3">
+                    <button class="btn btn-success" id="btnRegReab">Registrar</button>
+                    <input type="reset" name="reabreset" value="Limpiar" class="btn btn-warning"> 
+                    </div>
+                </form>         
+            </div>
+
+</div>
+
+<div class="incidencias-container" id="incidenciasContainer">
+
+  <div class="title--incidencias-container">
+    <h3 class="incidencias-title">SITUACION ACTUAL</h3>
+  </div>
+
+  <div class="incidencias--btns-container">
+        <button id="btnWinRegIncidencia" class="btn-reg-incidencia">Registrar Incidencia</button>
+        <button id="btnAllRegistros" class="btn-show-incidencia">Mostrar Registros</button>
+  </div>
+
+  <!--<div class="table--incencias-container">
+     <table class="table-incidencias">
+      <caption class="caption-incidencias">Tabla Resumen</caption>
+      <thead class="thead-incidencias">
+        <tr class="tr-incidencias">
+          <th class="th-incidencias">Tickets</th>
+          <th class="th-incidencias">Urgente</th>
+          <th class="th-incidencias">Alta</th>
+          <th class="th-incidencias">Media</th>
+          <th class="th-incidencias">Baja</th>
+        </tr>
+      </thead>
+      <tbody class="tbody-incidencias">
+        <tr class="tr-incidencias">
+          <td class="td-incidencias">Abiertos</td>
+          <td class="td-incidencias" id="abiertoU">AU</td>
+          <td class="td-incidencias" id="abiertoA">AA</td>
+          <td class="td-incidencias" id="abiertoM">AM</td>
+          <td class="td-incidencias" id="abiertoB">AB</td>
+        </tr>
+        <tr class="tr-incidencias">
+          <td class="td-incidencias" id="">Resueltos</td>
+          <td class="td-incidencias" id="resueltoU">RU</td>
+          <td class="td-incidencias" id="resueltoA">RA</td>
+          <td class="td-incidencias" id="resueltoM">RM</td>
+          <td class="td-incidencias" id="resueltoB">RB</td>
+        </tr>
+        <tr class="tr-incidencias">
+          <td class="td-incidencias">% Resueltos</td>
+          <td class="td-incidencias">1</td>
+          <td class="td-incidencias">0</td>
+          <td class="td-incidencias">1</td>
+          <td class="td-incidencias">0</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>-->
+
+  <div class="graficas--incidencias-container">
+
+    <div class="chart-estadoTickets">
+        <canvas id="chartET"></canvas>
+    </div>
+    <div class="chart-tiempoRes">
+        <canvas id="chartTR"></canvas>
+    </div>
+    <div class="chart-asigPersona">
+      <canvas id="chartAP"></canvas>
+    </div>
+
+  </div>
+  
+</div>
+
+<div class="despacho--container" id="despachoContainer">
+
+  <div class="despacho--regPedido">
+
+    <form class="form-regPedido" method="POST" id="formRegPedido">
+
+      <div class="formRP-inputs--container">
+
+        <div class="form-floating mb-1 inputs-content-regPedido">
+          <input type="text" class="form-control inputs-regPedido" id="regP-cliente" placeholder="0">
+          <label for="floatingInput">Cliente</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content-regPedido">
+          <input type="text" class="form-control inputs-regPedido" id="regP-direccion" placeholder="0">
+          <label for="floatingInput">Dirección</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content-regPedido">
+          <input type="datetime-local" id="regP-fecha" required class="form-control inputs-regPedido" required>
+          <label for="floatingInput">Fecha</label>
+        </div>
+
+
+        <div class="pedidos-container">
+          
+          <div class="addProduct-inputs--container">
+
+            <div class="form-floating mb-1">
+              <select name="ficha" id="selectProducts" class="form-select inputs-regPedido" aria-label="Default select example">
+              </select>
+              <label for="floatingInput">Producto</label>
+            </div>
+      
+            <div class="form-floating mb-1">
+              <input type="number" class="form-control inputs-regPedido" id="regP-cantidad" placeholder="0">
+              <label for="floatingInput">Cantidad</label>
+            </div>
+          </div>
+        
+          <div class="addProduct-btn--container">
+            <button class="btn-agregarProducto" id="btnAddProduct">Agregar</button>
+          </div>
+
+          <div class="pedidos-description">
+            <h2 class="pedidos-description--title">Lista de Productos</h2>
+            <table class="table-pedidos">
+              <thead class="thead-pedidos">
+                <th class="th-pedidos">Producto</th>
+                <th class="th-pedidos">Cantidad</th>
+              </thead>
+              <tbody class="tbody-pedidos" id="tBodyPedidos">
+               
+              </tbody>
+                
+            </table>
+          </div>
+        </div>
+
+       
+                    
+        <div class="pedidos--btns mt-3">
+          <button  id="btnRegPedido" class="btn btn-success regBtns">Registrar Pedido</button>
+          <button type="reset" class="btn btn-warning regBtns" id="regPedidoReset">Limpiar</button>
+        </div>
+
+      </div>
+                
+  </form>
+  </div>
+  <div class="despacho--listaPedidos">
+    
+
+    <h2 class="listaPedidos--title">PEDIDOS</h2>
+
+    <div class="acordeon" id="acordeon">
+     
+    </div> 
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/91ab5d32e4.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="app.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/topbar.js"></script>
+<script src="js/regCombustible.js"></script>
+<script src="js/incidencias.js"></script>
+<script src="js/acordeon.js"></script>
+<script src="js/despacho.js"></script>
+
+
+</body>
+</html>

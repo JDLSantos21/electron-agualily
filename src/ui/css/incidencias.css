@@ -1,0 +1,326 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  margin:0;
+}
+
+.incidencias-container{
+  background-color:#E6F3FF;
+  height:calc(100vh - 35px);
+  width:calc(100vw - 70px);
+  position: absolute;
+  right:0;
+  transform: translateY(-200%); 
+  transition: 0.4s;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.activetopbar{
+  width:calc(100% - 250px);
+}
+
+.showIncContainer{
+  transform: translate(0);
+}
+
+
+.title--incidencias-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height:10vh;
+}
+
+.incidencias-title{
+  text-align: center;
+  margin:0;
+  color: rgba(0, 65, 163, 0.70);
+  text-shadow: 2px 1px 3px rgb(0 0 0 / 25%);
+  font-weight:bold;
+  font-size:30px;
+}
+
+
+.incidencias--btns-container{
+  height:10vh;
+  display:flex;
+  align-items: center;
+  width:100%;
+  justify-content:space-evenly;
+}
+
+.btn-reg-incidencia,.btn-show-incidencia{
+  background-color: #206edb;
+  border:none;
+  outline:none;
+  height:45px;
+  border-radius:4px;
+  color: #fff;
+  padding:0 45px;
+  transition: 0.3s;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.384);
+}
+
+.btn-reg-incidencia:hover,.btn-show-incidencia:hover{
+  background-color: #185ab6;
+  color: rgba(255, 255, 255, 0.726);
+}
+
+/* GRAFICAS INCIDENCIAS */
+
+.graficas--incidencias-container{
+  height:calc(80vh - 70px);
+  width:90%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows:50% 50%;
+  background-color: rgb(221, 244, 252);
+}
+
+.chart-estadoTickets{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  /* background-color: aqua; */
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.chart-tiempoRes{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  /* background-color: rgb(247, 247, 247); */
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.chart-asigPersona{
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  /* background-color: aquamarine; */
+  border: 1px solid #000;
+}
+
+#chartET,#chartTR,#chartAP{
+  max-width:100%;
+  max-height:100%;
+}
+
+/* VENTANA REGISTRAR INCIDENCIA */
+
+.form-content-inc{
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color:#ecf3fa;
+}
+
+.form-inc{
+  width:80%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputs-form__content-inc{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputs-content-inc{
+  min-width:500px;
+}
+
+.category-title__text-inc{
+  font-weight:bold;
+  margin: 0;
+  text-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
+  color: rgba(0, 65, 163, 0.70);
+  font-size: 35px;
+}
+
+.regBtns-inc{
+  box-shadow:-2px 2px 15px rgba(0, 0, 0, 0.259);
+}
+
+/* CONTROL DE INCIDENCIAS */
+
+/* .allRegisterInc-container{
+  width:calc(100vw - 70px);
+  height:calc(100vh - 35px);
+  position: absolute;
+  right:0;
+  background-color:#E6F3FF;
+  transition:0.3s;
+  transform: translateX(-200%);
+} */
+
+.activetopbar{
+  width:calc(100% - 250px);
+}
+
+.allR-title--container{
+  width:100%;
+  text-align: center;
+}
+
+.allR-btns--container{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.allRegInc--table-container{
+  position: relative;
+  height:80vh;
+  overflow:scroll;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.allRegInc--title-container{
+  height:calc(20vh - 35px);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allRegInc--title{
+  color: rgba(0, 65, 163, 0.70);
+  text-shadow: 2px 1px 3px rgb(0 0 0 / 25%);
+  font-weight:bold;
+  font-size:30px;
+  margin: 0;
+}
+
+.allRegInc--table-container::-webkit-scrollbar{
+  display:none;
+}
+
+.allRegInc--table{
+  width:100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.thead{
+  position: sticky;
+  top:0;
+  background-color: #3D89F7;
+  color: #fff;
+}
+
+.tbody-inc{
+  background-color: #fff;
+}
+
+.tr,.td{
+  border-bottom:1px solid #000;
+  border-top:1px solid #000;
+}
+
+.th{
+  width:150px;
+  height:50px;
+}
+
+.updateRBtn{
+  width:100%;
+  height:40px;
+  background-color: #206edb;
+  border:none;
+  outline:none;
+  border-radius:4px;
+  color: #fff;
+  transition: 0.3s;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.384);
+}
+
+.updateRBtn:hover{
+  background-color: #185ab6;
+  color: rgba(255, 255, 255, 0.726);
+}
+
+.actionTD,.actionTDC{
+  /* background-color: #7c7f830e; */
+  height:40px;
+  width:100px;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+}
+
+.actionTDC{
+  color: green;
+  font-size:22px;
+  border: 1px solid #000;
+}
+
+.estado--resuelto{
+  color:rgb(15, 161, 15);
+}
+
+.estado--abierto{
+  color: rgb(209, 155, 55);
+}
+
+/* FORM COMPLETAR RESOLUCION DE TICKET */
+.ticketR-form-container{
+  width:100%;
+  height:100vh;
+  background-color: #E6F3FF;
+  position: absolute;
+  top:0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-200%);
+  transition: 0.3s;
+
+}
+
+.ticketR-form-{
+  width:70%;
+}
+
+.inputs-inc{
+   min-width:500px; 
+}
+
+.resBtns-container{
+  width:100%;
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.btn-volver-Reg{
+  position: absolute;
+  top:2rem;
+  left: 2rem;
+}
+
+
+/* TABLA DE TICKETS */
+
+
+
+
+.containerDesplegado{
+  transform: translateX(0);
+}

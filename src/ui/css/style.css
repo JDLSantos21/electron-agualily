@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@font-face {
+    font-family:Aachen;
+    src: url(fonts/AachenBold.ttf);
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+:root{
+    --text-color:rgb(255, 251, 251);
+    --card-bg-color:#0d2e57;
+}
+
+body{
+    background-color:#E6F3FF;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body::-webkit-scrollbar{
+    display:none;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.btnConsulta{
+    width:150px;
+    height:40px;
+    outline:none;
+    border:1px solid rgba(0, 0, 0, 0.123);
+    position: absolute;
+    right:2.5rem;
+    top:48%;
+    background-color: #575af8;
+    color: #fff;
+    transition: 0.3s;
+    border-radius:3px;
+}
+
+.btnConsulta:hover{
+    background-color: #383bdb;
+}
+
+/* FORMULAIRO */
+
+.category-title{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:10%;
+    width:100%;
+}
+
+.category-title__text{
+    margin: 0;
+    text-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
+    color: rgba(0, 65, 163, 0.70);
+    font-weight: bold;
+}
+
+
+.form-content{
+    position: absolute;
+    right:0;
+    height:calc(100vh - 35px);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    width:calc(100% - 70px);
+}
+
+.activetopbar{
+    width:calc(100% - 250px);
+}
+
+.form{
+border-radius:5px;
+box-shadow: 2px 2px 10px 1px rgba(75, 189, 197, 0.329);
+display:flex;
+flex-direction: column;
+justify-content:space-evenly;
+align-items: center;
+width:50%;
+height:85%;
+position: relative;
+background: linear-gradient(-45deg, #beccd8, #a0c7ec, #6c9fec, #0d2e57d2);
+background-size: 400% 400%;
+animation: gradient 6s ease infinite;
+transition: 0.5s;
+}
+
+.inputs-form__content{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs-content{
+    width:70%;
+}
+
+ .textarea{
+    resize:none;
+    height: 400px;
+} 
+
+ .textarea::-webkit-scrollbar{
+    display:none;
+} 
+
+.btns{
+    display:flex;
+    justify-content: space-evenly;
+    width:60%;
+}
+
+.regBtns{
+    width:150px;
+}
+
+.btnDisponibilidad{
+    width:150px;
+    height:40px;
+    outline:none;
+    border:1px solid rgba(0, 0, 0, 0.123);
+    position: absolute;
+    left:2.5rem;
+    bottom: 3rem;
+    background-color: #575af8;
+    color: #fff;
+    transition: 0.3s;
+    border-radius:3px;
+}
+
+.btnDisponibilidad:hover{
+    background-color: #383bdb;
+}
+
+/* .historico--tanque-container{
+    position: absolute;
+    right:1.3rem;
+    top: 8rem;
+    width:200px;
+    height:70px;
+    border-radius: 6.5px;
+    background-color: #0a40b4;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    flex-direction: column;
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.397);
+}
+
+.historico--tanque-title{
+    margin:0;
+    color: #fff;
+    font-size:18px;
+    transition:0.3s;
+    position: absolute;
+    top:8px;
+}
+
+.historico--tanque{
+    margin:0;
+    color: #fff;
+    font-size:16px;
+    transition:0.3s;
+    position: relative;
+    top:10px;
+}
+
+.historico--tanque:hover{
+    font-size: 17px;
+} */

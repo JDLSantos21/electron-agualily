@@ -65,10 +65,9 @@ btnAddProduct.addEventListener('click',(e)=>{
   
   if(productCantidad.value !== "" && productCantidad.value !== "0"){
 
+    activadorPedido = 0
+    
     pedidosArray.forEach(pedidoA => {
-      
-      activadorPedido = 0
-      
       if(pedidoA.productoID == selectProducts.value){
         pedidoA.cantidad = parseInt(pedidoA.cantidad) + parseInt(productCantidad.value)
         productCantidad.value = ""
@@ -77,7 +76,7 @@ btnAddProduct.addEventListener('click',(e)=>{
 
     });
     
-    if(activadorPedido == 1){
+    if(activadorPedido > 0){
       console.log(activadorPedido,"Es un producto igual.")
     }else{
       function crearObjetoPedido() {

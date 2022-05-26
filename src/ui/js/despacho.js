@@ -57,23 +57,47 @@ ipc.on('productos', (event,productos)=>{
 })
 
 let pedidosArray = []
+let activadorPedido = 0
 
 btnAddProduct.addEventListener('click',(e)=>{
   e.preventDefault()
 
   
   if(productCantidad.value !== "" && productCantidad.value !== "0"){
+
+    pedidosArray.forEach(pedidoA => {
+      
+      activadorPedido = 0
+      
+      if(pedidoA.productoID == selectProducts.value){
+        pedidoA.cantidad = parseInt(pedidoA.cantidad) + parseInt(productCantidad.value)
+        productCantidad.value = ""
+        activadorPedido += 1
+      }
+
+    });
     
-    let pedidoObj = {
-      productoID:selectProducts.value,
-      productoName:selectProducts[selectProducts.value - 1].textContent,
-      cantidad:productCantidad.value,
-      cliente:rpCliente.value,
-      direccion:rpDireccion.value,
-      fecha:rpFecha.value
+    if(activadorPedido == 1){
+      console.log(activadorPedido,"Es un producto igual.")
+    }else{
+      function crearObjetoPedido() {
+        console.log(activadorPedido,"Producto no es igual")
+        let pedidoObj = {
+          productoID:selectProducts.value,
+          productoName:selectProducts[selectProducts.value - 1].textContent,
+          cantidad:productCantidad.value,
+          cliente:rpCliente.value,
+          direccion:rpDireccion.value,
+          fecha:rpFecha.value
+        }
+        pedidosArray.push(pedidoObj)
+        productCantidad.value = ''
+      }
+  
+      crearObjetoPedido()
     }
-    pedidosArray.push(pedidoObj)
-    productCantidad.value = ''
+
+      
 
   }else if(productCantidad.value == "0"){
     Swal.fire({
@@ -100,6 +124,7 @@ btnAddProduct.addEventListener('click',(e)=>{
     <tr class="tr-pedidos">
     <td class="td-pedidos">${producto.productoName}</td>
     <td class="td-pedidos">${producto.cantidad}</td>
+    </tr>
     `
 
   })
@@ -165,8 +190,6 @@ ipc.on('dataPedidosProducts',async (event,dataProducts)=>{
           `
         }
       }
-
-
 
         showPedido += `
         
@@ -245,7 +268,7 @@ setInterval(()=>{
         
     })
   }
-},2000) //set interval para que al seleccionar los botos puestos pos innerHTML esten antes de pedir la declaracion.
+},2000) //set interval para que al seleccionar los botones puestos pos innerHTML esten antes de pedir la declaracion.
 
 
 

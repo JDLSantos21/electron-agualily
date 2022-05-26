@@ -4,6 +4,8 @@
 
 body{
   margin:0;
+  user-select: none;
+    -webkit-user-select: none;
 }
 
 .incidencias-container{

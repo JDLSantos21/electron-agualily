@@ -58,6 +58,7 @@ ipc.on('productos', (event,productos)=>{
 
 let pedidosArray = []
 let activadorPedido = 0
+let pedidoObj = {}
 
 btnAddProduct.addEventListener('click',(e)=>{
   e.preventDefault()
@@ -81,13 +82,10 @@ btnAddProduct.addEventListener('click',(e)=>{
     }else{
       function crearObjetoPedido() {
         console.log(activadorPedido,"Producto no es igual")
-        let pedidoObj = {
+          pedidoObj = {
           productoID:selectProducts.value,
           productoName:selectProducts[selectProducts.value - 1].textContent,
-          cantidad:productCantidad.value,
-          cliente:rpCliente.value,
-          direccion:rpDireccion.value,
-          fecha:rpFecha.value
+          cantidad:productCantidad.value
         }
         pedidosArray.push(pedidoObj)
         productCantidad.value = ''
@@ -141,21 +139,36 @@ btnRegPedido.addEventListener("click",(e)=>{
       icon:'warning',
       timer:5000
      })
-  }else if(rpCliente.value === '' || rpDireccion.value === '' || rpFecha.value === ''){
+  }else if(rpCliente.value === '' || rpDireccion.value === ''){
+    Swal.fire({
+      title:'¡No puedes dejar campos vacios!',
+      icon:'warning',
+      timer:5000
+     })
+  }else if(rpFecha.value === ''){
     Swal.fire({
       title:'¡No puedes dejar campos vacios!',
       icon:'warning',
       timer:5000
      })
   }else{
-    ipc.invoke("pedidoProducts",pedidosArray)
-    rpCliente.value = ''
-    rpDireccion.value = ''
-    rpFecha.value = ''
-    pedidosArray = []
-    tBodyPedidos.innerHTML = "";
-    ipc.send('loadPedidos')
-    ipc.send('loadPedidosProduts')
+
+    pedidosArray[0]['cliente'] = rpCliente.value
+    pedidosArray[0]['direccion'] = rpDireccion.value //AÑADIENDO INFO AL OBJETO DE PEDIDO
+    pedidosArray[0]['fecha'] = rpFecha.value
+    
+    if(rpFecha !== ''){
+      ipc.invoke("pedidoProducts",pedidosArray)
+      ipc.send('loadPedidos')
+      ipc.send('loadPedidosProduts')
+      pedidosArray = []
+      tBodyPedidos.innerHTML = "";
+      rpCliente.value = ''
+      rpDireccion.value = ''
+      rpFecha.value = ''
+      pedidoObj = {}
+    }   
+
   }
 
 

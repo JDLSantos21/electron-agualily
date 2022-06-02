@@ -87,10 +87,13 @@ ipc.on('registros',(event,results)=>{
 
     sumaGalones += element.Galones
 
+    let estado = 0
+
     if(kmAnterior && element.Kilometraje !== 0 && element.Kilometraje < kmAnterior){
       restaKM = kmAnterior - element.Kilometraje
       console.log(`${kmAnterior} - ${element.Kilometraje} = ${kmAnterior-element.Kilometraje}`)
       sumaKM += restaKM
+      estado = restaKM / element.Galones;
     }
 
     let fecha = moment(element.Fecha);
@@ -104,7 +107,8 @@ ipc.on('registros',(event,results)=>{
     <td>${element.Galones}</td>
     <td>${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</td>
     <td>${element.Firma}</td>
-    <td>${element.Comentario}</td>
+    <td>${element.Comentario}</td> 
+    ${estado < 7 ? `<td class='atencion' style="background-color:red">ATENCIÓN <br> ${estado.toFixed(2)} KM's/G</td>` : estado > 20 ? `<td class='revisar' style="background-color:orange">REVISAR <br> ${estado.toFixed(2)} KM's/G</td>` :`<td class='bien' style="background-color:rgb(46, 182, 46)">BIEN</td>`}
     </tr>
     `
     kmAnterior = element.Kilometraje

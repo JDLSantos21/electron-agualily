@@ -43,45 +43,33 @@
 
 <div class="sidebar" id="sidebar">
 
-        <div class="sidebar-item">
+  <div class="sidebar-item">
+    <a href="#" class="sidebar-link" id="sidebarCombustible"> 
+      <span class="sidebar-icons"> <i class="fa-solid fa-gas-pump"></i> </span>
+      <span class="sidebar-menu-title">Combustible</span>
+    </a>
+  </div>
 
-                <a href="#" class="sidebar-link" id="sidebarCombustible"> 
-                        <span class="sidebar-icons">
-                                <i class="fa-solid fa-gas-pump"></i>
-                        </span>
+  <div class="sidebar-item">
+    <a href="#" class="sidebar-link" id="sidebarIncidencias"> 
+      <span class="sidebar-icons"> <i class="fa-solid fa-clipboard-list"></i> </span>
+      <span class="sidebar-menu-title">Tickets</span>
+    </a>
+  </div>
 
-                        <span class="sidebar-menu-title">Combustible</span>
-                </a>
-        </div>
-        <div class="sidebar-item">
-                <a href="#" class="sidebar-link" id="sidebarIncidencias"> 
-                        <span class="sidebar-icons">
-                                <i class="fa-solid fa-clipboard-list"></i>
-                        </span>
+  <div class="sidebar-item">
+    <a href="#" class="sidebar-link" id="sidebarDespacho"> 
+      <span class="sidebar-icons"> <i class="fa-solid fa-truck-ramp-box"></i> </span>
+      <span class="sidebar-menu-title">Despacho</span>
+    </a>
+  </div>
 
-                        <span class="sidebar-menu-title">Tickets</span>
-                </a>
-        </div>
-
-        <div class="sidebar-item">
-                <a href="#" class="sidebar-link" id="sidebarDespacho"> 
-                        <span class="sidebar-icons">
-                                <i class="fa-solid fa-truck-ramp-box"></i>
-                        </span>
-
-                        <span class="sidebar-menu-title">Despacho</span>
-                </a>
-        </div>
-
-        <div class="sidebar-item">
-                <a href="#" class="sidebar-link" id="questionIcon"> 
-                        <span class="sidebar-icons">
-                                <i class="fa-solid fa-question"></i>
-                        </span>
-
-                        <span class="sidebar-menu-title">Información</span>
-                </a>
-        </div>
+  <div class="sidebar-item">
+    <a href="#" class="sidebar-link" id="questionIcon"> 
+      <span class="sidebar-icons"> <i class="fa-solid fa-question"></i> </span>
+      <span class="sidebar-menu-title">Información</span>
+    </a>
+  </div>
 
 </div>
 
@@ -90,9 +78,7 @@
 <button id="btnConsulta" class="btnConsulta">Consultar</button>
 
 <div class="category-title">
-    <h2 class="category-title__text">
-        REGISTRAR CONSUMO
-    </h2>
+  <h2 class="category-title__text">REGISTRAR CONSUMO</h2>
 </div>
 
 <!-- <div class="historico--tanque-container">
@@ -165,7 +151,7 @@
     </div>
 
     <div class="btns mt-3">
-        <button  id="btn-send" class="btn btn-success regBtns" name="registrar">Registrar</button>
+      <button  id="btn-send" class="btn btn-success regBtns" name="registrar">Registrar</button>
      <button type="reset" class="btn btn-warning regBtns">Limpiar</button>
      <!-- <button id="btnConsulta"><i class="fa-solid fa-folder-open"></i></button> -->
  
@@ -182,67 +168,72 @@
 
 
 <div class="information">
-        <h1 class="reab-title">DISPONIBILIDAD</h1>
+
+  <h1 class="reab-title">DISPONIBILIDAD</h1>
                 
-            <div class="disp-content shadow-lg p-3 rounded">
+    <div class="disp-content shadow-lg p-3 rounded">
                 
-               <div class="disp-content--data">
-                <div class="galonesDisp">
-                 <h3 class="disponible ">Galones Disponibles</h3>
-                 <div class="disp-result shadow p-3 mb-3 bg-body rounded" id="gDisponibles">
-                  </div>
-                </div>
+      <div class="disp-content--data">
+        <div class="galonesDisp">
+          <h3 class="disponible ">Galones Disponibles</h3>
+          <div class="disp-result shadow p-3 mb-3 bg-body rounded" id="gDisponibles">
+          </div>
+        </div>
         
-                        <div class="galonesGast">
-                                <h3 class="gastado">Galones Consumidos</h3>
-                                <div class="gast-result shadow p-3 mb-3 bg-body rounded" id="gGastados">
-                                </div>
-                        </div>
-                </div>
+        <div class="galonesGast">
+          <h3 class="gastado">Galones Consumidos</h3>
+          <div class="gast-result shadow p-3 mb-3 bg-body rounded" id="gGastados">
+          </div>
+        </div>
 
-                        
-                        <form class="treset-form">
-                        
-                        <div class="input-pass_reab form-floating mb-1">
-                            <input type="password" name="pass" class="form-control" id="inputDispReset" required placeholder="name@example.com" >
-                            <label for="floatingInput">Contraseña</label>
-                        </div>
-                        <button class="btn btn-danger" id="btnDispReset">Resetear</button>
-                        </form>
-                        
-                    </div>        
-           </div>
+      </div>
 
-        <div class="form-content_reab">
+      <form class="treset-form">
+                        
+        <div class="input-pass_reab form-floating mb-1">
+          <input type="password" name="pass" class="form-control" id="inputDispReset" required placeholder="name@example.com" >
+          <label for="floatingInput">Contraseña</label>
+        </div>
 
-                <form action="enviarnaob.php" class="form-reab" method="POST">
+        <button class="btn btn-danger" id="btnDispReset">Resetear</button>
+
+      </form>
+                        
+    </div>        
+
+</div>
+
+<div class="form-content_reab">
+
+  <form action="enviarnaob.php" class="form-reab" method="POST">
             
-                    <div class="form-floating mb-1 inputs-disp-container">
-                        <input type="text" name="reabcantidad" class="form-control form-reab--inputs" id="reabCantidad" required placeholder="name@example.com"  required>
-                        <label for="floatingInput">Cantidad Recibida en Galones</label>
-                    </div>
+    <div class="form-floating mb-1 inputs-disp-container">
+          <input type="text" name="reabcantidad" class="form-control form-reab--inputs" id="reabCantidad" required placeholder="name@example.com"  required>
+          <label for="floatingInput">Cantidad Recibida en Galones</label>
+    </div>
             
-                    <div class="form-floating mb-1 inputs-disp-container">
-                        <input type="datetime-local" name="reabfecha" id="reabFecha" required class="form-control form-reab--inputs" required>
-                        <label for="floatingInput">Fecha</label>
-                    </div>
+    <div class="form-floating mb-1 inputs-disp-container">
+          <input type="datetime-local" name="reabfecha" id="reabFecha" required class="form-control form-reab--inputs" required>
+          <label for="floatingInput">Fecha</label>
+    </div>
                     
-                    <div class="form-floating mb-1 inputs-disp-container">
-                        <input type="text" name="reabFirma" class="form-control form-reab--inputs" id="reabFirma" required placeholder="name@example.com"  required>
-                        <label for="floatingInput">Nombre Recibidor</label>
-                    </div>
+    <div class="form-floating mb-1 inputs-disp-container">
+          <input type="text" name="reabFirma" class="form-control form-reab--inputs" id="reabFirma" required placeholder="name@example.com"  required>
+          <label for="floatingInput">Nombre Recibidor</label>
+    </div>
             
-                    <div class="form-floating mb-1 inputs-disp-container">
-                        <input type="password" name="inputRegPass" class="form-control form-reab--inputs" id="inputRegPass" required placeholder="name@example.com" required>
-                        <label for="floatingInput">Contraseña</label>
-                    </div>
+    <div class="form-floating mb-1 inputs-disp-container">
+          <input type="password" name="inputRegPass" class="form-control form-reab--inputs" id="inputRegPass" required placeholder="name@example.com" required>
+          <label for="floatingInput">Contraseña</label>
+    </div>
                     
-                    <div class="btns-reab mt-3">
-                    <button class="btn btn-success" id="btnRegReab">Registrar</button>
-                    <input type="reset" name="reabreset" value="Limpiar" class="btn btn-warning"> 
-                    </div>
-                </form>         
-            </div>
+    <div class="btns-reab mt-3">
+    <button class="btn btn-success" id="btnRegReab">Registrar</button>
+    <input type="reset" name="reabreset" value="Limpiar" class="btn btn-warning"> 
+    </div>
+
+  </form>
+</div>
 
 </div>
 
@@ -256,45 +247,7 @@
         <button id="btnWinRegIncidencia" class="btn-reg-incidencia">Registrar Incidencia</button>
         <button id="btnAllRegistros" class="btn-show-incidencia">Mostrar Registros</button>
   </div>
-
-  <!--<div class="table--incencias-container">
-     <table class="table-incidencias">
-      <caption class="caption-incidencias">Tabla Resumen</caption>
-      <thead class="thead-incidencias">
-        <tr class="tr-incidencias">
-          <th class="th-incidencias">Tickets</th>
-          <th class="th-incidencias">Urgente</th>
-          <th class="th-incidencias">Alta</th>
-          <th class="th-incidencias">Media</th>
-          <th class="th-incidencias">Baja</th>
-        </tr>
-      </thead>
-      <tbody class="tbody-incidencias">
-        <tr class="tr-incidencias">
-          <td class="td-incidencias">Abiertos</td>
-          <td class="td-incidencias" id="abiertoU">AU</td>
-          <td class="td-incidencias" id="abiertoA">AA</td>
-          <td class="td-incidencias" id="abiertoM">AM</td>
-          <td class="td-incidencias" id="abiertoB">AB</td>
-        </tr>
-        <tr class="tr-incidencias">
-          <td class="td-incidencias" id="">Resueltos</td>
-          <td class="td-incidencias" id="resueltoU">RU</td>
-          <td class="td-incidencias" id="resueltoA">RA</td>
-          <td class="td-incidencias" id="resueltoM">RM</td>
-          <td class="td-incidencias" id="resueltoB">RB</td>
-        </tr>
-        <tr class="tr-incidencias">
-          <td class="td-incidencias">% Resueltos</td>
-          <td class="td-incidencias">1</td>
-          <td class="td-incidencias">0</td>
-          <td class="td-incidencias">1</td>
-          <td class="td-incidencias">0</td>
-        </tr>
-      </tbody>
-    </table> 
-  </div>-->
-
+  
   <div class="graficas--incidencias-container">
 
     <div class="chart-estadoTickets">

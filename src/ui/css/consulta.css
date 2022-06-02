@@ -150,6 +150,13 @@ justify-content: center;
     color: rgb(255, 251, 251);
 }
 
+.bien,.revisar,.atencion{
+    color: #fff;
+}
+
+
+
+
 @media print{
 
     @page{

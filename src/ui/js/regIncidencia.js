@@ -7,7 +7,7 @@ const btnRegIncidencia = document.getElementById('btnRegIncidencia');
 
 btnRegIncidencia.addEventListener('click', (e)=>{
   e.preventDefault();
-
+  
   const newIncidencia = {
     estado:1,
     prioridad:prioridadIncidencia.value,
@@ -17,11 +17,29 @@ btnRegIncidencia.addEventListener('click', (e)=>{
     asignado:asigIncidencia.value,
     comentario:''
   }
+  
+  if(newIncidencia.prioridad === "select" || newIncidencia.descripcion === "" || newIncidencia.fechareg === "" || newIncidencia.informante === "" || newIncidencia.asignado === ""){
 
-  async function registrarIncidencia() {
-    await ipc.invoke('addIncidencia',newIncidencia);
+    Swal.fire({
+      title:'¡Completa los datos!',
+      text:"Es necesario completar toda la información, intentelo nuevamente.",
+      icon:'warning',
+      timer:5000
+     })
+
+  }else{
+
+    async function registrarIncidencia() {
+      await ipc.invoke('addIncidencia',newIncidencia);
+    }
+
+    registrarIncidencia();
+
+    prioridadIncidencia.value = "select"
+    desIncidencia.value = ""
+    fechaIncidencia.value = ""   //reset inputs registro incidencia
+    informanteIncidencia.value = ""
+    asigIncidencia.value = ""
   }
-
-  registrarIncidencia();
 
 })

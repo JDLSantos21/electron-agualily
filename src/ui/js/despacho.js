@@ -281,8 +281,3 @@ setInterval(()=>{
     })
   }
 },2000) //set interval para que al seleccionar los botones puestos pos innerHTML esten antes de pedir la declaracion.
-
-
-
-
-

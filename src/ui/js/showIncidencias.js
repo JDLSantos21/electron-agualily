@@ -2,6 +2,8 @@ const { ipcRenderer } = require('electron');
 ipc = ipcRenderer
 const tbodyInc = document.getElementById('tbody-inc');
 const tdPrioridad = document.getElementById('td-prioridad');
+let moment = require('moment'); // require
+moment.locale('es'); 
 
 ipc.on('dataIncidencias',(event,incidencias)=>{
 
@@ -10,14 +12,14 @@ ipc.on('dataIncidencias',(event,incidencias)=>{
    const listaIncidencias = incidencias
    listaIncidencias.forEach(element => {
 
-     let cadenaFechaReg = element.fechareg
+     let cadenaFechaReg = moment(element.fechareg)
      let cadenaFechaRes = element.fechares
      let tiempoResolucion = element.tiempores
 
      if(cadenaFechaRes === null){
        cadenaFechaRes = 'NA'
      }else{
-      cadenaFechaRes = cadenaFechaRes.toLocaleDateString()
+      cadenaFechaRes = moment(cadenaFechaRes).format('D MMMM YYYY')
      }
 
      
@@ -48,7 +50,7 @@ ipc.on('dataIncidencias',(event,incidencias)=>{
        ${estado === 'Resuelto' ? `<td class='estado--resuelto td'>${estado}</td>` : `<td class='estado--abierto td'>${estado}</td>`}
        <td class="td">${prioridad}</td>
        <td class="td">${element.descripcion}</td>
-       <td class="td">${cadenaFechaReg.toLocaleDateString()}</td>
+       <td class="td">${cadenaFechaReg.format('D MMMM YYYY')}</td>
        <td class="td">${element.informante}</td>
        <td class="td">${element.asignado}</td>
        <td class="td">${cadenaFechaRes}</td>
@@ -78,6 +80,7 @@ const fechaRes = document.getElementById("fechaRes");
 const comentarioRes = document.getElementById("comentarioRes");
 const resSendBtn = document.getElementById("resSendBtn");
 
+let incUpdate = {}
 
 setTimeout(()=>{
 console.log(updateRBtn.length)
@@ -86,10 +89,11 @@ console.log(updateRBtn.length)
       let upBtn = updateRBtn[i].id;
       let upBtnID = upBtn;
       ticketRFormContainer.classList.add('containerDesplegado');
+
       resSendBtn.addEventListener('click',(e)=>{
-        // e.preventDefault()
+         e.preventDefault()
         // updtIncidencia(upBtnID);
-        const incUpdate = {
+        incUpdate = {
           ID:upBtnID,
           fechares:fechaRes.value,
           comentario:comentarioRes.value
@@ -97,27 +101,38 @@ console.log(updateRBtn.length)
     
         console.log(incUpdate)
     
-        async function mandarUpdtIncidencia() {
-          await ipc.invoke('addUpdtIncidencia',incUpdate);
+
+        if(incUpdate.fechares === ""){
+          Swal.fire({
+            title:'¡Completa los datos!',
+            text:"La fecha de resolución es un campo obligatorio.",
+            icon:'warning',
+            timer:5000
+           })
+        }else{
+
+          async function mandarUpdtIncidencia() {
+            await ipc.invoke('addUpdtIncidencia',incUpdate);
+          }
+      
+          mandarUpdtIncidencia()
+
+          fechaRes.value = ""
+          comentarioRes.value = ""
+
         }
-    
-        mandarUpdtIncidencia()
+
+       
       })
     })
   }
 
 },100)
 
-
-
-  
-
-
-
-
-
 btnVolverReg.addEventListener("click",()=>{
 
   ticketRFormContainer.classList.remove("containerDesplegado")
-
+  incUpdate = {}
+  fechaRes.value = ""
+  comentarioRes.value = ""
 })

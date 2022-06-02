@@ -401,7 +401,7 @@ function createWindow() {
         contextIsolation:false,
       }});
     
-    child.removeMenu();
+    // child.removeMenu();
     child.loadFile('src/ui/regTicket.html');
     child.show();
 
@@ -422,7 +422,7 @@ function createWindow() {
         contextIsolation:false,
       }});
     
-    child.removeMenu();
+    // child.removeMenu();
     child.loadFile('src/ui/cIncidencias.html');
     child.show();
 

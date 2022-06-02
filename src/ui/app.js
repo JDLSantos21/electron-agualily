@@ -24,27 +24,41 @@ sidebarCombustible.addEventListener('click',()=>{
 })
 
 RegCombustible.addEventListener('click',(e)=>{
-  console.log(chofer.value);
+  e.preventDefault()
 
-  const newRegister = {
-    ficha:ficha.value,
-    chofer:chofer.value,
-    kilometraje:kilometraje.value,
-    galones:galones.value,
-    fecha:fecha.value,
-    firma:firma.value,
-    comentario:comentario.value,
-    tanqueactual:tanqueActual.value
+  if(ficha.value === 'select' || chofer.value === '' || kilometraje.value === '' || galones.value === '' || fecha.value === '' || firma.value === ''){
+
+    Swal.fire({
+      icon: 'warning',
+      title: '¡Completa los datos!',
+      text: 'Es necesario completar todos los datos. En caso de Planta u Otro. Poner kilometraje en 0.',
+    })
+
+  }else{
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Consumo Registrado',
+      showConfirmButton: false,
+      timer: 900
+    })
+
+    const newRegister = {
+      ficha:ficha.value,
+      chofer:chofer.value,
+      kilometraje:kilometraje.value,
+      galones:galones.value,
+      fecha:fecha.value,
+      firma:firma.value,
+      comentario:comentario.value,
+    }
+  
+    async function registrarFicha () {
+      await ipc.invoke("add",newRegister);
+    }
+  
+    registrarFicha();
   }
-
-  async function registrarFicha () {
-
-    await ipc.invoke("add",newRegister);
-
-  }
-
-  registrarFicha();
-
 })
 
 
@@ -103,3 +117,27 @@ btnRegReab.addEventListener('click', async (e)=>{
 
 })
 
+const questionIcon = document.getElementById("questionIcon")
+
+questionIcon.addEventListener("click",()=>{
+
+  Swal.fire({
+    title: "Información",
+    icon: 'question',
+    text:`Programa Desarrollado & Diseñado por Jose A. De Los Santos en el año 2022.       
+    Preguntas consultas o dudas, favor de comunicarse a JDLSantos21@hotmail.com o al 849-356-0359.`,
+    footer:'Todos los Derechos Reservados ©.',
+    timerProgressBar:true,
+    timer:10000,
+    iconHtml: '!',
+    confirmButtonText: "Cerrar",
+
+    showClass: {
+      popup: 'animate__animated animate__fadeInDown'
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOutUp'
+    }
+  })
+
+})

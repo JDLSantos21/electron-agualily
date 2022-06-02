@@ -19,6 +19,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "chartjs": "^0.3.24",
     "electron": "^8.5.5",
     "electron-packager": "^15.5.1",

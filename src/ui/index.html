@@ -10,6 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js
   "></script>
+  <link rel="stylesheet" href="../../node_modules/animate.css/animate.css">
   <link rel="stylesheet" href="css/disponibilidad.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sidebar.css">
@@ -73,12 +74,12 @@
         </div>
 
         <div class="sidebar-item">
-                <a href="#" class="sidebar-link"> 
+                <a href="#" class="sidebar-link" id="questionIcon"> 
                         <span class="sidebar-icons">
-                                <i class="fa-solid fa-toolbox"></i>
+                                <i class="fa-solid fa-question"></i>
                         </span>
 
-                        <span class="sidebar-menu-title">Mantenimiento</span>
+                        <span class="sidebar-menu-title">Información</span>
                 </a>
         </div>
 
@@ -139,7 +140,7 @@
     </div>
 
     <div class="form-floating mb-1 inputs-content">
-            <input type="text" name="kilometraje" class="form-control inputs" id="kilometraje"  placeholder="name@example.com">
+            <input type="number" name="kilometraje" class="form-control inputs" id="kilometraje"  placeholder="name@example.com">
             <label for="floatingInput">Kilometraje</label>
     </div>
     <!-- <div class="form-floating mb-1 inputs-content">
@@ -147,7 +148,7 @@
             <label for="floatingInput">Tanque Actual</label>
     </div> -->
     <div class="form-floating mb-1 inputs-content">
-            <input type="text" name="galones" class="form-control inputs" id="galones"  placeholder="name@example.com">
+            <input type="number" name="galones" class="form-control inputs" id="galones"  placeholder="name@example.com">
             <label for="floatingInput">Galones</label>
     </div>
     <div class="form-floating mb-1 inputs-content">

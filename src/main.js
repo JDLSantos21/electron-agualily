@@ -380,7 +380,7 @@ function createWindow() {
         contextIsolation:false,
       }});
     
-    child.removeMenu();
+    // child.removeMenu();
     child.loadFile('src/ui/consulta.html');
     child.show();
 

@@ -80,7 +80,6 @@ const fechaRes = document.getElementById("fechaRes");
 const comentarioRes = document.getElementById("comentarioRes");
 const resSendBtn = document.getElementById("resSendBtn");
 
-let incUpdate = {}
 
 setTimeout(()=>{
 console.log(updateRBtn.length)
@@ -91,9 +90,9 @@ console.log(updateRBtn.length)
       ticketRFormContainer.classList.add('containerDesplegado');
 
       resSendBtn.addEventListener('click',(e)=>{
-         e.preventDefault()
+        e.preventDefault()
         // updtIncidencia(upBtnID);
-        incUpdate = {
+        let incUpdate = {
           ID:upBtnID,
           fechares:fechaRes.value,
           comentario:comentarioRes.value
@@ -105,7 +104,7 @@ console.log(updateRBtn.length)
         if(incUpdate.fechares === ""){
           Swal.fire({
             title:'¡Completa los datos!',
-            text:"La fecha de resolución es un campo obligatorio.",
+            text:"La Fecha de Resolución es un campo obligatorio.",
             icon:'warning',
             timer:5000
            })
@@ -114,12 +113,9 @@ console.log(updateRBtn.length)
           async function mandarUpdtIncidencia() {
             await ipc.invoke('addUpdtIncidencia',incUpdate);
           }
-      
+
           mandarUpdtIncidencia()
-
-          fechaRes.value = ""
-          comentarioRes.value = ""
-
+          location.reload()
         }
 
        
@@ -130,9 +126,5 @@ console.log(updateRBtn.length)
 },100)
 
 btnVolverReg.addEventListener("click",()=>{
-
-  ticketRFormContainer.classList.remove("containerDesplegado")
-  incUpdate = {}
-  fechaRes.value = ""
-  comentarioRes.value = ""
+  location.reload()
 })

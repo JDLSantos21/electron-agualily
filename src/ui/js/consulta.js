@@ -22,7 +22,6 @@ ipc.on('registrosTotal',(event,results)=>{
   const list = results
   list.forEach(element => {
     let fecha = moment(element.Fecha);
-    console.log(fecha)
     template+=`
     
     <tr>
@@ -65,8 +64,6 @@ const filterData = {
   lastDate:lastDate.value
 }
 
-console.log(filterData);
-
 async function consultReg () {
   await ipc.invoke("getReg",filterData);
 }
@@ -76,26 +73,47 @@ consultReg();
 })
 
 ipc.on('registros',(event,results)=>{
+  let sumaGalones = 0
+  let restaKM = 0
+  let sumaKM = 0
+  let kmAnterior = 0
   let template = ''
   const list = results
+
   list.forEach(element => {
+
+    sumaGalones += element.Galones
+
+    if(kmAnterior && element.Kilometraje !== 0 && element.Kilometraje < kmAnterior){
+      restaKM = kmAnterior - element.Kilometraje
+      console.log(`${kmAnterior} - ${element.Kilometraje} = ${kmAnterior-element.Kilometraje}`)
+      sumaKM += restaKM
+    }
+
     let fecha = moment(element.Fecha);
+    
     template+=`
     
     <tr>
-      <td>${element.Ficha}</td>
-      <td>${element.Chofer}</td>
-      <td>${element.Kilometraje}</td>
-      <td>${element.Galones}</td>
-      <td>${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</td>
-      <td>${element.Firma}</td>
-      <td>${element.Comentario}</td>
+    <td>${element.Ficha}</td>
+    <td>${element.Chofer}</td>
+    <td>${element.Kilometraje}</td>
+    <td>${element.Galones}</td>
+    <td>${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</td>
+    <td>${element.Firma}</td>
+    <td>${element.Comentario}</td>
     </tr>
     `
+    kmAnterior = element.Kilometraje
+    // console.log(`${restaKM}: ${fecha.format("dddd Do MMMM YYYY")}`)
   });
 
   tBody.innerHTML = template
+  console.log(sumaGalones)
+  console.log(sumaKM)
+  console.log(sumaKM/sumaGalones)
 
+  
 })
 
 /*------------------------------------------------------------------*/

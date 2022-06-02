@@ -5,7 +5,10 @@ ipc = ipcRenderer
 let moment = require('moment'); // require
 moment.locale('es');
 
-
+const consultPrint = document.getElementById('consultPrint');
+consultPrint.addEventListener('click',()=>{
+  window.print();
+})
 
 const tBody = document.getElementById('tbody');
 const cBtn = document.getElementById('cBtn');

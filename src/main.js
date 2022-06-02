@@ -378,6 +378,7 @@ function createWindow() {
       webPreferences: {
         nodeIntegration:true,
         contextIsolation:false,
+        nativeWindowOpen: true
       }});
     
     // child.removeMenu();

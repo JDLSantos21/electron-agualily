@@ -116,3 +116,66 @@ justify-content: center;
     text-align:center;
 }
 
+
+.btn-consultar{
+    background-color:#257DFD;
+    color:#fff;
+    border:none;
+    padding: 1rem 2rem;
+    border-radius:5px;
+    margin:0 0 0 25px;
+    position: relative;
+    bottom: 7.5px;
+    transition: 0.3s ease;
+}
+
+.btn-consultar:hover{
+    background-color:#257bfdc5;
+}
+
+.printBtn{
+    background-color:#257DFD;
+    color:#fff;
+    border:none;
+    padding: 0.3rem 1.2rem;
+    transition: 0.3s ease;
+    outline:none;
+    position: absolute;
+    top:0.7rem;
+    right:0.7rem;
+}
+
+.printBtn:hover{
+    background-color:#257bfdc4;
+    color: rgb(255, 251, 251);
+}
+
+@media print{
+
+    @page{
+        margin:0;
+    }        
+    
+    #consultPrint{
+        display:none;
+    }
+
+    .main-consulta{
+        width:100%;
+        position: static;
+    }
+    
+    .box-consult{
+        display:none;
+    }
+    
+    .table-content{
+        max-height:100%;
+        overflow:visible;
+    }
+
+    tr,td,th {
+        margin:0;
+    }
+    
+    }

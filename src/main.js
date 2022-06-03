@@ -370,9 +370,9 @@ function createWindow() {
     child = new BrowserWindow({
       parent:window,
       height:728,
-      width:800,
+      width:1024,
       minHeight:728,
-      minWidth:800,
+      minWidth:1024,
       modal:true,
       show:false,
       webPreferences: {

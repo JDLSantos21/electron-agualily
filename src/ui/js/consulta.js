@@ -10,6 +10,8 @@ consultPrint.addEventListener('click',()=>{
   window.print();
 })
 
+const tdResumen = document.getElementById('tdResumen');
+
 const tBody = document.getElementById('tbody');
 const cBtn = document.getElementById('cBtn');
 const consultFicha = document.getElementById('consultFicha');
@@ -59,19 +61,30 @@ document.addEventListener("DOMContentLoaded",()=>{
 // consultReg();
 
 cBtn.addEventListener('click',async (e)=>{
+
 e.preventDefault();
 
-const filterData = {
-  ficha:consultFicha.value,
-  firstDate:firstDate.value,
-  lastDate:lastDate.value
+if(consultFicha.value === '' && firstDate.value === ''){
+  Swal.fire({
+    title:'¡Ups! hubo un problema.',
+    text:'Especifica la Ficha o Fecha de la consulta.',
+    icon:'warning',
+    timer:5000
+   })
+}else{
+  const filterData = {
+    ficha:consultFicha.value,
+    firstDate:firstDate.value,
+    lastDate:lastDate.value
+  }
+  
+  async function consultReg () {
+    await ipc.invoke("getReg",filterData);
+  }
+  
+  consultReg();
 }
 
-async function consultReg () {
-  await ipc.invoke("getReg",filterData);
-}
-
-consultReg();
 
 })
 
@@ -108,18 +121,18 @@ ipc.on('registros',(event,results)=>{
     <td>${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</td>
     <td>${element.Firma}</td>
     <td>${element.Comentario}</td> 
-    ${estado < 7 ? `<td class='atencion' style="background-color:red">ATENCIÓN <br> ${estado.toFixed(2)} KM's/G</td>` : estado > 20 ? `<td class='revisar' style="background-color:orange">REVISAR <br> ${estado.toFixed(2)} KM's/G</td>` :`<td class='bien' style="background-color:rgb(46, 182, 46)">BIEN</td>`}
+    ${estado > 0 && estado < 7 ? `<td class='atencion' style="background-color:red">ATENCIÓN <br> ${estado.toFixed(2)} KM's/G</td>` : estado > 20 ? `<td class='revisar' style="background-color:orange">REVISAR <br> ${estado.toFixed(2)} KM's/G</td>` : estado == 0 ? `<td class='normal'>En espera...</td>`:`<td class='bien' style="background-color:rgb(46, 182, 46)">BIEN</td>`}
     </tr>
     `
     kmAnterior = element.Kilometraje
-    // console.log(`${restaKM}: ${fecha.format("dddd Do MMMM YYYY")}`)
+    
   });
 
   tBody.innerHTML = template
   console.log(sumaGalones)
   console.log(sumaKM)
-  console.log(sumaKM/sumaGalones)
-
+  let promedio = (sumaKM/sumaGalones)
+  tdResumen.innerHTML = `<p>${promedio.toFixed(2)}</p>`
   
 })
 

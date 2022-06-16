@@ -37,7 +37,6 @@ btnDispReset.addEventListener('click',(e)=>{
   dispPass = inputDispReset.value;
   if(dispPass === 'Santos021'){
       ipc.send('resetDisp');
-      ipc.send('dispNow');  //pidiendo datos para actualizar.
       Swal.fire({
         title:'Reinicio Satisfactorio',
         text:'¡Se ha reiniciado la Disponibilidad!',
@@ -47,6 +46,8 @@ btnDispReset.addEventListener('click',(e)=>{
 
        inputDispReset.value = ''
 
+      ipc.send('dispNow');  //pidiendo datos para actualizar.
+      
   }else{
     Swal.fire({
       title:'¡Contraseña Incorrecta!',

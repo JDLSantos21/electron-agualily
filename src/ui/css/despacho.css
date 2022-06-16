@@ -160,8 +160,12 @@
   color: green;
 }
 
-.acordeon--estado-1{
+.acordeon--estado-2{
   color: orange;
+}
+
+.acordeon--estado-1{
+  color: #169ee3;
 }
 
 .finishP-btn{

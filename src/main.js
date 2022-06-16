@@ -134,6 +134,9 @@ ipc.on('resetDisp', async ()=>{
 /*----------INSERTAR DATOS INCIDENCIAS---------*/
 
 ipc.handle('addIncidencia',(event,obj)=>{
+  
+  obj.asignado = obj.asignado.toLowerCase()
+
   regIncidencia(obj);
 })
 
@@ -161,7 +164,6 @@ async function regIncidencia(obj){
      }else{
          console.log('No existe el nombre')
          let newpersonalreparacion = {
-           ID:'',
            nombre:obj.asignado,
            abierto:1,
            resuelto:0
@@ -277,7 +279,7 @@ ipc.handle("pedidoProducts",async(evt,arrProducts)=>{
 
   async function regPedido() {
     const conn = await getConnection();
-    conn.query(`INSERT INTO pedidos VALUES (${idPedido},'${arrProducts[0].cliente}','${arrProducts[0].direccion}','${arrProducts[0].fecha}',1)`)
+    conn.query(`INSERT INTO pedidos VALUES (${idPedido},'${arrProducts[0].cliente}','${arrProducts[0].direccion}','${arrProducts[0].fecha}',2)`)
   }
 
   regPedido()
@@ -315,8 +317,17 @@ ipc.handle('finishStatePedido',async(event,datos)=>{
 
   let pedidoID = parseInt(datos.ID)
 
-  const conn = await getConnection();
-  conn.query(`UPDATE pedidos SET estado = 0 WHERE ID = ${pedidoID}`)
+  const conn = await getConnection()
+
+  conn.query(`SELECT estado FROM pedidos WHERE ID=${pedidoID}`,(error,result,fields)=>{
+    
+    if(result[0].estado == 2){
+      conn.query(`UPDATE pedidos SET estado = 1 WHERE ID = ${pedidoID}`)
+    }else if(result[0].estado == 1){
+      conn.query(`UPDATE pedidos SET estado = 0 WHERE ID = ${pedidoID}`)
+    }
+  })
+  
 })
 
 
@@ -381,7 +392,7 @@ function createWindow() {
         nativeWindowOpen: true
       }});
     
-    // child.removeMenu();
+    child.removeMenu();
     child.loadFile('src/ui/consulta.html');
     child.show();
 
@@ -402,7 +413,7 @@ function createWindow() {
         contextIsolation:false,
       }});
     
-    // child.removeMenu();
+    child.removeMenu();
     child.loadFile('src/ui/regTicket.html');
     child.show();
 
@@ -423,7 +434,7 @@ function createWindow() {
         contextIsolation:false,
       }});
     
-    // child.removeMenu();
+    child.removeMenu();
     child.loadFile('src/ui/cIncidencias.html');
     child.show();
 

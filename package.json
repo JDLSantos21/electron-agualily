@@ -1,14 +1,14 @@
 {
   "name": "agua-lily-app",
   "productName": "Agua Lily",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+    "package-win": "electron-packager . agua-lily-app --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . agua-lily-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
   },
   "keywords": [],
   "author": "Jose A. De Los Santos",
@@ -21,12 +21,14 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "chartjs": "^0.3.24",
-    "electron": "^8.5.5",
     "electron-packager": "^15.5.1",
     "electron-reload": "^2.0.0-alpha.1",
     "moment": "^2.29.3",
     "momentjs": "^2.0.0",
     "promise-mysql": "^5.1.0",
     "sweetalert2": "^11.4.10"
+  },
+  "devDependencies": {
+    "electron": "^19.0.4"
   }
 }

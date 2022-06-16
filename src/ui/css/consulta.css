@@ -150,10 +150,16 @@ justify-content: center;
     color: rgb(255, 251, 251);
 }
 
-.bien,.revisar,.atencion{
+.bien,.revisar,.atencion,.normal{
+    position: relative;
     color: #fff;
+    /* max-width:200px; */
+    text-align: center;
+    /* margin-left: 1rem; */
+    /* padding:5px; */
+    /* border-radius:4px; */
+    /* box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.227); */
 }
-
 
 
 

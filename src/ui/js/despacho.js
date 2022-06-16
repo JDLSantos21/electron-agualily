@@ -209,7 +209,7 @@ ipc.on('dataPedidosProducts',async (event,dataProducts)=>{
            <div class = "acordeon--title">
             <h2 class = 'acordeon-title-full'>${pedido.cliente}</h2>
             <p class = 'acordeon--timeago'>${moment(fecha).startOf('second').fromNow()}<p>
-            ${pedido.estado == 1 ? `<p class = 'acordeon--estado'>Estado: <span class='acordeon--estado-1'>En Proceso...</span><p>` : `<p class = 'acordeon--estado'>Estado: <span class='acordeon--estado-0'>Completado</span><p>`}
+            ${pedido.estado == 2 ? `<p class = 'acordeon--estado'>Estado: <span class='acordeon--estado-2'>Pendiente...</span><p>` : pedido.estado == 1 ? `<p class = 'acordeon--estado'>Estado: <span class='acordeon--estado-1'>Despachado</span><p>` : `<p class = 'acordeon--estado'>Estado: <span class='acordeon--estado-0'>Completado</span><p>`}
            </div>
            
            <div class="acordeon--content">
@@ -218,7 +218,7 @@ ipc.on('dataPedidosProducts',async (event,dataProducts)=>{
                <p class="sub-title">Cliente: <span class="data">${pedido.cliente}</span></p>
                <p class="sub-title">Fecha y Hora: <span class="data">${fecha.format('dddd Do MMMM YYYY, h:mm:ss a.')}</span></p>
                <p class="sub-title">Dirección: <span class="data">${pedido.direccion}</span></p>
-               ${pedido.estado == 1 ? `<button class='finishP-btn' id='${pedido.ID}'>Terminar Pedido</button>` : ``}
+               ${pedido.estado == 2 ? `<button class='finishP-btn' id='${pedido.ID}'>Despachado</button>` : ``}
                <table class="table-show--pedidos">
                  <thead>
                    <th class="th-pedidos--show">Producto</th>
@@ -242,6 +242,9 @@ ipc.on('dataPedidosProducts',async (event,dataProducts)=>{
 
 })
 
+//text terminar pedido linea 221
+// pedido.estado == 1 ? `<button class='finishP-btn' id='${pedido.ID}'>Terminar Pedido</button>` :
+
 
 setInterval(()=>{
   const pedidoStateUpdate = document.querySelectorAll('.finishP-btn')
@@ -254,23 +257,25 @@ setInterval(()=>{
         }
 
         Swal.fire({
-          title: 'Finalizar Pedido?',
+          title: 'Cambiar Estado del Pedido?',
           text: "¡Cuidado! Este cambio es permanente!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: '¡Si, Finalizar!',
+          confirmButtonText: '¡Si, Cambiar!',
           cancelButtonText: 'Cancelar'
         }).then((result) => {
           if (result.isConfirmed) {
 
             ipc.invoke('finishStatePedido',btnStateID);
+
+            setTimeout(function() {
             ipc.send('loadPedidos')
-            console.log(upBtnID)
+            },100)
 
             Swal.fire(
-              'Pedido Completado!',
+              'Estado Cambiado!',
               'Estado del Pedido Actualizado',
               'success'
             )
@@ -280,4 +285,4 @@ setInterval(()=>{
         
     })
   }
-},2000) //set interval para que al seleccionar los botones puestos pos innerHTML esten antes de pedir la declaracion.
+},1000) //set interval para que al seleccionar los botones puestos pos innerHTML esten antes de pedir la declaracion.

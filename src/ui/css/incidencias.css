@@ -315,6 +315,20 @@ body{
   position: absolute;
   top:2rem;
   left: 2rem;
+  width:150px;
+  height:40px;
+  background-color: #206edb;
+  border:none;
+  outline:none;
+  border-radius:4px;
+  color: #fff;
+  transition: 0.3s;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.384)
+}
+
+.btn-volver-Reg:hover{
+  background-color: #185ab6;
+  color: rgba(255, 255, 255, 0.726);
 }
 
 

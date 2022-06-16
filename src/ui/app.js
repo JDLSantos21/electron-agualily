@@ -58,7 +58,22 @@ RegCombustible.addEventListener('click',(e)=>{
     }
   
     registrarFicha();
+
+    ficha.value = "select"
+    chofer.value = ""
+    kilometraje.value = ""
+    galones.value = ""
+    fecha.value = ""
+    firma.value = ""
+    comentario.value = ""
+    
   }
+
+  setTimeout(()=>{
+    console.log('Este es el timeout!!');
+    ipc.send('dispNow');
+  },500);
+  
 })
 
 

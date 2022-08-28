@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/popups/asociadosPopups.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Registrar Socio</title>
+</head>
+<body>
+  <main class="main">
+
+    <h2 class="direccion-title">Dirección del Negocio</h2>
+
+    <form class="form form-socio" method="POST" id="RegCombustible">
+
+      <div class="inputs-form__content">
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="nombreNegocio" class="form-control inputs" id="negocioName"  placeholder="name@example.com">
+          <label for="floatingInput">Nombre del Negocio</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="nombreRepresentante" class="form-control inputs" id="representanteName"  placeholder="name@example.com">
+          <label for="floatingInput">Nombre del Representante</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="cedula" class="form-control inputs" id="cedula"  placeholder="name@example.com" onkeypress="return event.charCode>=48 && event.charCode<=57" onpaste="return false;" ondrop="return false;">
+          <label for="floatingInput">Cedula Representante</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="tel" name="telefono" class="form-control inputs" id="telefono"  placeholder="name@example.com" onkeypress="return event.charCode>=48 && event.charCode<=57" onpaste="return false;" ondrop="return false;">
+          <label for="floatingInput">Teléfono</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="date" name="fecha" class="form-control inputs" id="fecha"  placeholder="name@example.com">
+          <label for="floatingInput">Fecha</label>
+        </div>
+
+      </div>
+
+      <div class="inputs-direccion">
+        
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="sector" class="form-control inputs" id="sector"  placeholder="name@example.com">
+          <label for="floatingInput">Sector</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="calle" class="form-control inputs" id="calle"  placeholder="name@example.com">
+          <label for="floatingInput">Calle</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="numero" class="form-control inputs" id="numero"  placeholder="name@example.com" onkeypress="return event.charCode>=48 && event.charCode<=57" onpaste="return false;" ondrop="return false;">
+          <label for="floatingInput">#</label>
+        </div>
+      </div>
+
+      <div class="btns btns-socios mt-3">
+        <button  id="btnRegistrar" class="regBtns" name="registrar">Registrar</button>
+        <button type="reset" class="regBtns">Limpiar</button>
+      </div>
+  
+    </form>
+  </main>
+</body>
+<script src="https://kit.fontawesome.com/91ab5d32e4.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/popups/reg-socios.js"></script>
+</html>

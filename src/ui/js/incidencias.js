@@ -11,7 +11,10 @@ const sidebarDespacho = document.getElementById('sidebarDespacho');
 sbIncidenciasBtn.addEventListener('click',()=>{
   incidenciasContainer.classList.add('showIncContainer')
   despachoContainer.classList.remove('containerDesplegado')
+  asociadosContainer.classList.remove('containerDesplegado')
+  blackout.classList.add('show-blackout')
   localStorage.setItem('despPage-activa','false');
+  localStorage.setItem('sociosPage-activa','false');
 
   if(incidenciasContainer.classList.contains('showIncContainer')){
     localStorage.setItem('IncPage-activa','true');

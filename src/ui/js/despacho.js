@@ -5,10 +5,14 @@ moment.locale('es');
 sidebarDespacho.addEventListener('click',()=>{
   despachoContainer.classList.add('containerDesplegado')
   incidenciasContainer.classList.remove('showIncContainer')
+  asociadosContainer.classList.remove('containerDesplegado')
+  blackout.classList.add('show-blackout')
   localStorage.setItem('IncPage-activa','false');
+  localStorage.setItem('sociosPage-activa','false');
 
   if(despachoContainer.classList.contains('containerDesplegado')){
     localStorage.setItem('despPage-activa','true');
+    
   }else{
     localStorage.setItem('despPage-activa','false');
   }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/popups/asociadosPopups.css">
+  <title>Registrar Equipo</title>
+</head>
+<body>
+  
+  <main class="main">
+
+    <form class="form" method="POST" id="RegCombustible">
+
+      <div class="inputs-form__content">
+  
+        <div class="form-floating mb-1 inputs-content">
+          <select name="tipo-equipo" id="tipo-equipo" class="form-select inputs" aria-label="Default select example">
+            <option value="select" selected>Seleccionar</option>
+            <option value="1001">Nevera</option>
+            <option value="1002">Anaquel</option>
+          </select>
+          <label for="floatingInput">Tipo de Equipo</label>
+        </div>
+    
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" name="modelo" class="form-control inputs" id="modelo"  placeholder="name@example.com">
+          <label for="floatingInput">Modelo</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="text" class="form-control inputs" id="serial"  placeholder="name@example.com" onkeypress="return event.charCode>=48 && event.charCode<=57" onpaste="return false;" ondrop="return false;">
+          <label for="floatingInput">Numero de serie</label>
+        </div>
+
+        <div class="form-floating mb-1 inputs-content">
+          <input type="date" name="fecha" class="form-control inputs" id="fecha"  placeholder="name@example.com">
+          <label for="floatingInput">Fecha</label>
+        </div>
+        
+        <div class="btns mt-3">
+          <button  id="btnRegistrar" class="regBtns" name="registrar">Registrar</button>
+          <button type="reset" class="regBtns">Limpiar</button>
+        </div>
+
+      </div>
+  
+    </form>
+  </main>
+
+<script src="https://kit.fontawesome.com/91ab5d32e4.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/popups/reg-equipo.js"></script>
+</body>
+</html>

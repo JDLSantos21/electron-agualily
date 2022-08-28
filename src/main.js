@@ -1,4 +1,5 @@
 const {BrowserWindow, ipcMain, Notification} = require('electron');
+const { Connection } = require('promise-mysql');
 const {getConnection} = require('./database');
 
 ipc = ipcMain
@@ -24,7 +25,7 @@ async function addRegister(obj){
   console.log(obj)
 
   new Notification ({
-    title: 'Electron MySQL',
+    title: 'Agua Lily Gestión',
     body: 'Consumo Registrado'
   }).show();
 
@@ -50,7 +51,7 @@ async function addReab(obj){
   console.log(obj)
 
   new Notification ({
-    title: 'Agua & Hielo Lily',
+    title: 'Agua Lily Gestión',
     body: 'Reabastecimiento Registrado'
   }).show();
 
@@ -176,7 +177,7 @@ async function regIncidencia(obj){
 
 
   new Notification ({
-    title:'Incidencias',
+    title:'Gestión Incidencias',
     body:'Incidencia Registrada Satisfactoriamente'
   }).show();
 
@@ -263,19 +264,18 @@ ipc.handle("pedidoProducts",async(evt,arrProducts)=>{
   arrProducts.forEach(producto => {
 
     async function iPedido() {
-      console.log(producto)
+      
+      const conn = await getConnection();
       producto.productoID = parseInt(producto.productoID)
       producto.cantidad = parseInt(producto.cantidad)
-       const conn = await getConnection();
-       conn.query(`INSERT INTO pedido_productos VALUES (${idPedido},${producto.productoID},'${producto.productoName}',${producto.cantidad})`)
-      }
-      
-      iPedido()
-      
-      
-    }
     
-  );
+      conn.query(`INSERT INTO pedido_productos (id_pedido,id_producto,name_product,cantidad) VALUES (${idPedido},${producto.productoID},'${producto.productoName}',${producto.cantidad})`)
+
+    }
+      
+    iPedido()
+      
+  });
 
   async function regPedido() {
     const conn = await getConnection();
@@ -283,14 +283,6 @@ ipc.handle("pedidoProducts",async(evt,arrProducts)=>{
   }
 
   regPedido()
-
- 
-
-  // for(let i=0;i=arrProducts.length;i++){
-  //   
-  // }
-
-
 })
 
 ipc.on('loadPedidos',async()=>{
@@ -330,6 +322,70 @@ ipc.handle('finishStatePedido',async(event,datos)=>{
   
 })
 
+
+// PIDIENDO DATOS DE SOCIOS
+
+ipc.on("reqAsociadosData", async()=>{
+  const conn = await getConnection();
+  conn.query(`SELECT * FROM socios ORDER BY asociado_fechareg DESC`,(error,results,fields)=>{
+    window.webContents.send('allSociosData',results);
+  });
+
+  conn.query(`SELECT * FROM equipos ORDER BY estado DESC`,(error,results,fields)=>{
+    window.webContents.send('allEquiposData',results);
+  });
+
+})
+
+// AÑADIENDO NUEVO SOCIO
+
+ipc.handle("addNewSocio",async (event,socio)=>{
+  const conn = await getConnection();
+  await conn.query(`INSERT INTO socios SET ?`, socio)
+})
+
+//AÑADIENDO NUEVO EQUIPO Y VALIDANDO SERIAL EXISTENTE
+
+ipc.handle("addNewEquipo",async (event,equipo)=>{
+  const conn = await getConnection();
+  
+  conn.query(`SELECT serial FROM equipos`,async (error,seriales,fields)=>{
+
+    let allSerials = JSON.stringify(seriales)
+
+    if(allSerials.includes(equipo.serial)){
+      child.webContents.send('serialExist','si')
+    }else{
+      child.webContents.send('serialExist','no')
+      await conn.query(`INSERT INTO equipos SET ?`, equipo)
+    }
+
+  })
+
+})
+
+ipc.on('sendAsigData',async()=>{
+  
+  conn = await getConnection();
+  conn.query(`SELECT * FROM socios WHERE estado = 0`,(error,socios,fields)=>{
+    child.webContents.send('dataAsigSocios',socios)
+  })
+  conn.query(`SELECT * FROM equipos WHERE estado = 0`,(error,equipos,fields)=>{
+    child.webContents.send('dataAsigEquipo',equipos)
+  })
+
+})
+
+ipc.handle('addNewAsociacion',async(event,asignacion)=>{
+
+  const conn = await getConnection();
+  conn.query(`INSERT INTO asociaciones_equipos SET ?`,asignacion)
+
+  conn.query(`UPDATE socios SET equipo_asociado = ${asignacion.asociaciones_idequipo},estado = 1 WHERE id_asociado = ${asignacion.asociaciones_idsocio}`)
+
+  conn.query(`UPDATE equipos SET estado = 1 WHERE id_equipo = ${asignacion.asociaciones_idequipo}`)
+
+})
 
 
 let window 
@@ -436,6 +492,72 @@ function createWindow() {
     
     child.removeMenu();
     child.loadFile('src/ui/cIncidencias.html');
+    child.show();
+
+  })
+
+  ipc.on("openSociosWin",()=>{
+    child = new BrowserWindow({
+      parent:window,
+      height:600,
+      minHeight:600,
+       maxHeight:600,
+      width:650,
+      minWidth:650,
+       maxWidth:650,
+      modal:true,
+      show:false,
+      webPreferences: {
+        nodeIntegration:true,
+        contextIsolation:false,
+      }});
+    
+     child.removeMenu();
+    child.loadFile('src/ui/regSocio.html');
+    child.show();
+
+  })
+
+  ipc.on("openAsigEquipoWin",()=>{
+    child = new BrowserWindow({
+      parent:window,
+      height:600,
+      minHeight:600,
+       maxHeight:600,
+      width:650,
+      minWidth:650,
+       maxWidth:650,
+      modal:true,
+      show:false,
+      webPreferences: {
+        nodeIntegration:true,
+        contextIsolation:false,
+      }});
+    
+     child.removeMenu();
+    child.loadFile('src/ui/asigEquipo.html');
+    child.show();
+
+  })
+
+  ipc.on("openEquiposWin",()=>{
+    child = new BrowserWindow({
+      parent:window,
+      height:600,
+      minHeight:600,
+       maxHeight:600,
+      width:650,
+      minWidth:650,
+       maxWidth:650,
+      modal:true,
+      show:false,
+      webPreferences: {
+        nodeIntegration:true,
+        contextIsolation:false,
+      }});
+    
+     child.removeMenu();
+    child.loadFile('src/ui/regEquipo.html');
     child.show();
 
   })

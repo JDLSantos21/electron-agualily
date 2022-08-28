@@ -12,6 +12,7 @@
   "></script>
   <link rel="stylesheet" href="../../node_modules/animate.css/animate.css">
   <link rel="stylesheet" href="css/disponibilidad.css">
+  <link rel="stylesheet" href="css/asociados.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" href="css/topbar.css">
@@ -65,6 +66,13 @@
   </div>
 
   <div class="sidebar-item">
+    <a href="#" class="sidebar-link" id="sbAsociadosBtn"> 
+      <span class="sidebar-icons"> <i class="fa-solid fa-handshake-simple"></i> </span>
+      <span class="sidebar-menu-title">Asociados</span>
+    </a>
+  </div>
+  
+  <div class="sidebar-item">
     <a href="#" class="sidebar-link" id="questionIcon"> 
       <span class="sidebar-icons"> <i class="fa-solid fa-question"></i> </span>
       <span class="sidebar-menu-title">Información</span>
@@ -90,9 +98,9 @@
 
 <form class="form" method="POST" id="RegCombustible">
 
-<div class="inputs-form__content">
-<div class="form-floating mb-1 inputs-content">
-    <select name="ficha" id="ficha" class="form-select inputs" aria-label="Default select example">
+    <div class="inputs-form__content">
+    <div class="form-floating mb-1 inputs-content">
+      <select name="ficha" id="ficha" class="form-select inputs" aria-label="Default select example">
         <option value="select">Seleccionar</option>
         <option value="1">F-1</option>
         <option value="2">F-2</option>
@@ -115,15 +123,45 @@
         <option value="200">Cama Corta</option>
         <option value="300">Planta</option>
         <option value="400">Otro</option>
+      </select>
+      <label for="floatingInput">Ficha</label>
+    </div>
 
-    </select>
-    <label for="floatingInput">Ficha</label>
-
-</div>
     <div class="form-floating mb-1 inputs-content">
+      <select name="chofer" id="chofer" class="form-select inputs" aria-label="Default select example">
+          <option value="select">Seleccionar</option>
+          <option>Jonat Gonzales Vicioso</option>
+          <option>Santo A. Vizcaino</option>
+          <option>Jarmen Jaquez García</option>
+          <option>Edison Valentin</option>
+          <option>Elisandro de Paula</option>
+          <option>Roque Heredia</option>
+          <option>Juan Jose Ramirez (Papito 7)</option>
+          <option>Oliver Melendez</option>
+          <option>Wilton Antonio</option>
+          <option>Aurelio Muñoz</option>
+          <option>Omar Nicasio</option>
+          <option>Leo</option>
+          <option>Agustín Fermín</option>
+          <option>Domingo Abad</option>
+          <option>Jose Nuñez (El Mello)</option>
+          <option>Juan de Dios</option>
+          <option>Manny Manuel</option>
+          <option>Arison Martinez</option>
+          <option>Ruben Berroa</option>
+          <option>Felix Manuel Ferran</option>
+          <option>Adrian</option>
+          <option>Antonio</option>
+          <option>Joaquín de la Cruz</option>
+          <option>Juan Paula</option>
+          <option>Otros</option>
+      </select>
+      <label for="floatingInput">Chofer</label>
+    </div>
+    <!-- <div class="form-floating mb-1 inputs-content">
             <input type="text" name="chofer" class="form-control inputs" id="chofer" placeholder="name@example.com">
             <label for="floatingInput">Chofer</label>
-    </div>
+    </div> -->
 
     <div class="form-floating mb-1 inputs-content">
             <input type="number" name="kilometraje" class="form-control inputs" id="kilometraje"  placeholder="name@example.com">
@@ -208,7 +246,7 @@
   <form action="enviarnaob.php" class="form-reab" method="POST">
             
     <div class="form-floating mb-1 inputs-disp-container">
-          <input type="text" name="reabcantidad" class="form-control form-reab--inputs" id="reabCantidad" required placeholder="name@example.com"  required>
+          <input type="number" name="reabcantidad" class="form-control form-reab--inputs" id="reabCantidad" required placeholder="name@example.com"  required>
           <label for="floatingInput">Cantidad Recibida en Galones</label>
     </div>
             
@@ -268,84 +306,154 @@
 
   <div class="despacho--regPedido">
 
-    <form class="form-regPedido" method="POST" id="formRegPedido">
+      <form class="form-regPedido" method="POST" id="formRegPedido">
 
-      <div class="formRP-inputs--container">
+        <div class="formRP-inputs--container">
 
-        <div class="form-floating mb-1 inputs-content-regPedido">
-          <input type="text" class="form-control inputs-regPedido" id="regP-cliente" placeholder="0">
-          <label for="floatingInput">Cliente</label>
-        </div>
-
-        <div class="form-floating mb-1 inputs-content-regPedido">
-          <input type="text" class="form-control inputs-regPedido" id="regP-direccion" placeholder="0">
-          <label for="floatingInput">Dirección</label>
-        </div>
-
-        <div class="form-floating mb-1 inputs-content-regPedido">
-          <input type="datetime-local" id="regP-fecha" required class="form-control inputs-regPedido" required>
-          <label for="floatingInput">Fecha</label>
-        </div>
-
-
-        <div class="pedidos-container">
-          
-          <div class="addProduct-inputs--container">
-
-            <div class="form-floating mb-1">
-              <select name="ficha" id="selectProducts" class="form-select inputs-regPedido" aria-label="Default select example">
-              </select>
-              <label for="floatingInput">Producto</label>
-            </div>
-      
-            <div class="form-floating mb-1">
-              <input type="number" class="form-control inputs-regPedido" id="regP-cantidad" placeholder="0">
-              <label for="floatingInput">Cantidad</label>
-            </div>
+          <div class="form-floating mb-1 inputs-content-regPedido">
+            <input type="text" class="form-control inputs-regPedido" id="regP-cliente" placeholder="0">
+            <label for="floatingInput">Cliente</label>
           </div>
+
+          <div class="form-floating mb-1 inputs-content-regPedido">
+            <input type="text" class="form-control inputs-regPedido" id="regP-direccion" placeholder="0">
+            <label for="floatingInput">Dirección</label>
+          </div>
+
+          <div class="form-floating mb-1 inputs-content-regPedido">
+            <input type="datetime-local" id="regP-fecha" required class="form-control inputs-regPedido" required>
+            <label for="floatingInput">Fecha</label>
+          </div>
+
+
+          <div class="pedidos-container">
+            
+            <div class="addProduct-inputs--container">
+
+              <div class="form-floating mb-1">
+                <select name="ficha" id="selectProducts" class="form-select inputs-regPedido" aria-label="Default select example">
+                </select>
+                <label for="floatingInput">Producto</label>
+              </div>
         
-          <div class="addProduct-btn--container">
-            <button class="btn-agregarProducto" id="btnAddProduct">Agregar</button>
+              <div class="form-floating mb-1">
+                <input type="number" class="form-control inputs-regPedido" id="regP-cantidad" placeholder="0">
+                <label for="floatingInput">Cantidad</label>
+              </div>
+            </div>
+          
+            <div class="addProduct-btn--container">
+              <button class="btn-agregarProducto" id="btnAddProduct">Agregar</button>
+            </div>
+
+            <div class="pedidos-description">
+              <h2 class="pedidos-description--title">Lista de Productos</h2>
+              <table class="table-pedidos">
+                <thead class="thead-pedidos">
+                  <th class="th-pedidos">Producto</th>
+                  <th class="th-pedidos">Cantidad</th>
+                </thead>
+                <tbody class="tbody-pedidos" id="tBodyPedidos">
+                
+                </tbody>
+                  
+              </table>
+            </div>
           </div>
 
-          <div class="pedidos-description">
-            <h2 class="pedidos-description--title">Lista de Productos</h2>
-            <table class="table-pedidos">
-              <thead class="thead-pedidos">
-                <th class="th-pedidos">Producto</th>
-                <th class="th-pedidos">Cantidad</th>
-              </thead>
-              <tbody class="tbody-pedidos" id="tBodyPedidos">
-               
-              </tbody>
-                
-            </table>
+        
+                      
+          <div class="pedidos--btns mt-3">
+            <button  id="btnRegPedido" class="btn btn-success regBtns">Registrar Pedido</button>
+            <button type="reset" class="btn btn-warning regBtns" id="regPedidoReset">Limpiar</button>
           </div>
-        </div>
 
-       
-                    
-        <div class="pedidos--btns mt-3">
-          <button  id="btnRegPedido" class="btn btn-success regBtns">Registrar Pedido</button>
-          <button type="reset" class="btn btn-warning regBtns" id="regPedidoReset">Limpiar</button>
         </div>
-
-      </div>
-                
-  </form>
+                  
+    </form>
   </div>
-  <div class="despacho--listaPedidos">
-    
-    <div class="listaPedido--title-container">
-      <h2 class="listaPedidos--title">PEDIDOS</h2>
-    </div>
-    
 
-    <div class="acordeon" id="acordeon">
-     
-    </div> 
+  <div class="despacho--listaPedidos">
+      
+      <div class="listaPedido--title-container">
+        <h2 class="listaPedidos--title">PEDIDOS</h2>
+      </div>
+      
+
+      <div class="acordeon" id="acordeon">
+      
+      </div> 
+
+  </div>
 
 </div>
+
+<div class="asociados-container" id="asociadosContainer">
+
+  <div class="panel-asociados">
+
+    <div class="asociados-title--container">
+      <h2 class="asociados-title">PANEL DE ASOCIADOS</h2>
+    </div>
+
+    <div class="asociados-default--container">
+
+      <div class="default-container--alert">
+        <p class="default-title">No hay elementos seleccionados</p>
+        <p class="default-title"><i class="fa-solid fa-circle-exclamation"></i></p>
+        <p class="default-title">Por favor seleccione uno para ver sus detalles.</p>
+      </div>
+
+      <div class="default-container--buttons">
+        <button class="asociados-default-buttons" id="regSocio">Registrar Socio</button>
+        <button class="asociados-default-buttons" id="asigEquipo">Asignar Equipo</button>
+        <button class="asociados-default-buttons" id="regEquipo">Registrar Equipo</button>
+      </div>
+
+    </div>
+
+    <div class="asociados-socios--container" id="detalleSocios">
+
+    </div>
+
+  </div>
+
+  <div class="lista-datos">
+
+    <div class="listaDatos-buttons--container">
+      <button class="listaDatos-buttons" id="swapBtn-socios">Socios</button>
+      <button class="listaDatos-buttons" id="swapBtn-equipos">Equipos</button>
+    </div>
+
+    <div class="datos-socios--container" id="swapSocios-container">
+      <div class="socios-searchBox">
+        <input type="text" placeholder="&#xF002;  Filtrar Socios" class="socios-search--input" id="searchSocios" style="font-family:Arial, FontAwesome">
+      </div>
+
+      <div class="lista-socios" id="listaSocios"></div>
+
+    </div>
+
+    <div class="datos-equipos--container" id="swapEquipos-container">
+      <div class="equipos-searchBox">
+        <input type="text" placeholder="&#xF002;  Filtrar Equipos" class="equipos-search--input" id="searchEquipos" style="font-family:Arial, FontAwesome">
+      </div>
+      
+      <div class="lista-equipos" id="listaEquipos"></div>
+
+    </div>
+
+   
+
+  </div>
+ 
+</div>
+
+<div class="blackout" id="blackout">
+
+</div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/91ab5d32e4.js" crossorigin="anonymous"></script>
@@ -357,6 +465,7 @@
 <script src="js/incidencias.js"></script>
 <script src="js/acordeon.js"></script>
 <script src="js/despacho.js"></script>
+<script src="js/asociados.js"></script>
 
 
 </body>

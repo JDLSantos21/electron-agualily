@@ -1,0 +1,276 @@
+.asociados-container{
+  height:calc(100vh - 35px);
+  width:calc(100vw - 70px);
+  position:absolute;
+  right:0;
+  background-color: #E6F3FF;
+  transition: 0.4s;
+  transform: translateY(-200%);
+  z-index:100;
+  padding:8px;
+  display:flex;
+  justify-content: space-between;
+}
+
+.blackout{
+  height:calc(100vh - 35px);
+  width: calc(100vw - 70px);
+  background-color:#E6F3FF;
+  position: absolute;
+  right:0;
+  z-index:-1;
+}
+
+.show-blackout{
+  z-index:0;
+}
+
+.panel-asociados, .lista-datos{
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.301)  ;
+}
+
+.panel-asociados{
+  width:64%;
+  height:100%;
+  position: relative;
+  z-index:10;
+}
+
+.lista-datos{
+  width:35%;
+  height:100%;
+  position: relative;
+}
+
+.asociados-title--container{
+  width:100%;
+  height:90px;
+  background-color:#0D2E57;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.asociados-title{
+  color: #fff;
+  margin:0;
+  font-weight:600;
+  font-size:26px;
+}
+
+.asociados-default--container{
+  width:100%;
+  height:calc(100% - 90px);
+  background-color: rgb(248, 248, 247);
+  padding-top:2.5rem;
+}
+
+.default-container--alert{
+  position: relative;
+}
+
+.default-title:first-child, .default-title:nth-child(3){
+  font-size:20px;
+  margin:0;
+  font-weight:300;
+  font-style: italic;
+  text-align: center;
+}
+
+.default-title:nth-child(2){
+  font-size: 100px;
+  margin:0;
+  color: #828282;
+  text-align: center;
+}
+
+.default-container--buttons{
+  position: relative;
+  top: 5rem;
+  display:flex;
+  justify-content: space-around;
+}
+
+
+.asociados-default-buttons{
+  border:none;
+  background-color: #4599F9;
+  color: #fff;
+  padding:10px 20px;
+  border-radius:3px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.301);
+  transition: 0.2s ease-in-out;
+}
+
+.asociados-default-buttons:hover{
+  background-color: #2f88ec;
+}
+
+/* VENTANA DE DETALLE DE SOCIOS */
+
+.asociados-socios--container{
+  width:100%;
+  height:calc(100% - 90px);
+  background-color: #fff;
+  position: absolute;
+  bottom:0;
+  display:none;
+}
+
+
+/*//////////////////////// LISTA DE DATOS  ////////////////////*/
+
+.listaDatos-buttons--container{
+  width:100%;
+  height:50px;
+  background-color: #828282;
+  display:flex;
+  position: relative;
+}
+
+.listaDatos-buttons{
+  border:none;
+  padding:0;
+  width:50%;
+  background-color: #0D2E57;
+  color: #fff;
+  font-weight:500;
+  border-bottom:1px solid #fff;
+  transition:0.4s;
+}
+
+.listaDatos-buttons:nth-child(2):after{
+  content: '';
+  position: absolute;
+  background-color: #0D2E57;
+  height: 3px;
+  width:49.9%;
+  left:-0.1%;
+  top:0;
+  transition: 0.4s;
+}
+
+.listaDatos-button--active{
+  background-color: #fff;
+  color: #000;
+}
+
+.listaDatos-button--active::after{
+  transform: translateX(100%);
+}
+
+/* ////////////CONTAINERS DE LOS DATOS SOCIOS Y EQUIPO///////////////// */
+
+.datos-socios--container,.datos-equipos--container{
+  width:100%;
+  height:calc(100% - 50px);
+  transition: 0.4s;
+  /* transition: transform 0.3s; */
+  opacity:0;
+ 
+}
+
+.datos-socios--container{
+  transform: translateX(100%);
+}
+
+.datos-equipos--container{
+  position: absolute;
+  bottom:0;
+  transform: translateX(-100%);
+}
+
+.listaDatos-container-active{
+  transform: translateX(0);
+  opacity:1;
+}
+
+/* ////////////SEARCHBOX///////////////// */
+
+.socios-searchBox, .equipos-searchBox{
+  display:flex;
+  justify-content: center;
+  height: 35px;
+  position: relative;
+  top:20px;
+}
+
+.socios-search--input,.equipos-search--input{
+  outline: none;
+  border:none;
+  border-bottom:1px solid rgb(140, 138, 138);
+  width:90%;
+  font-size:14px;
+  padding-left:10px;
+  transition: 0.3s;
+}
+
+.socios-search--input::placeholder,.equipos-search--input::placeholder{
+  font-weight:lighter;
+  font-size:12px;
+  color: rgba(0, 0, 0, 0.648);
+  transition: 0.3s;
+}
+
+.socios-search--input:focus::placeholder,.equipos-search--input:focus::placeholder{
+  color: #828282b8;
+}
+
+.socios-search--input:focus,.equipos-search--input:focus{
+  border-color: rgb(0, 0, 0);
+}
+
+/* ////////////LISTA SOCIOS///////////////// */
+
+.lista-socios,.lista-equipos{
+  width:100%;
+  height:calc(100% - 105px);
+  position: absolute;
+  bottom: 35px;
+  background-color: rgba(178, 214, 248, 0.432);
+  /* overflow: scroll;
+  overflow-x: hidden; */
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:15px 5px;
+  box-shadow: 2px 2px 10px rgba(104, 104, 104, 0.200);
+}
+
+.lista-socios::-webkit-scrollbar,.lista-equipos::-webkit-scrollbar{
+  background-color: #ffffff;
+  width:10px;
+}
+
+.lista-socios::-webkit-scrollbar-thumb,.lista-socios::-webkit-scrollbar-button,.lista-equipos::-webkit-scrollbar-thumb,.lista-equipos::-webkit-scrollbar-button{
+  background-color: #2a6dfc;
+}
+
+.lista-socios::-webkit-scrollbar-thumb:hover,.lista-equipos::-webkit-scrollbar-thumb:hover{
+  background-color: #5d8ef8;
+}
+
+.item-socio,.item-equipo{
+  width:98%;
+  height:40px;
+  background-color:azure;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-radius:2px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow:0px 1px 20px -5px rgba(143, 146, 148, 0.466);
+  margin-bottom:6px;
+}
+
+.item-socio:hover,.item-equipo:hover{
+  background-color: rgba(240, 255, 255, 0.466);
+}
+
+.socio-name,.equipo-name{
+  color:#000;
+  margin:0;
+}
+

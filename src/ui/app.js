@@ -15,18 +15,22 @@ const btnConsulta = document.getElementById('btnConsulta');
 const btnRegReab = document.getElementById('btnRegReab');
 const sidebarCombustible = document.getElementById('sidebarCombustible');
 const actualSBtn = document.getElementById('actualSBtn');
+const blackout = document.getElementById('blackout');
 
 sidebarCombustible.addEventListener('click',()=>{
+  blackout.classList.remove('show-blackout')
   incidenciasContainer.classList.remove('showIncContainer')
   despachoContainer.classList.remove('containerDesplegado')
+  asociadosContainer.classList.remove('containerDesplegado')
   localStorage.setItem('IncPage-activa','false');
   localStorage.setItem('despPage-activa','false');
+  localStorage.setItem('sociosPage-activa','false');
 })
 
 RegCombustible.addEventListener('click',(e)=>{
   e.preventDefault()
 
-  if(ficha.value === 'select' || chofer.value === '' || kilometraje.value === '' || galones.value === '' || fecha.value === '' || firma.value === ''){
+  if(ficha.value === 'select' || chofer.value === 'select' || kilometraje.value === '' || galones.value === '' || fecha.value === '' || firma.value === ''){
 
     Swal.fire({
       icon: 'warning',
@@ -60,7 +64,7 @@ RegCombustible.addEventListener('click',(e)=>{
     registrarFicha();
 
     ficha.value = "select"
-    chofer.value = ""
+    chofer.value = "select"
     kilometraje.value = ""
     galones.value = ""
     fecha.value = ""

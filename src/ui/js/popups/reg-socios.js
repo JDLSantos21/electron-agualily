@@ -24,7 +24,8 @@ function regSocio() {
     cedula_representante:cedula.value,
     telefono:telefono.value,
     direccion:direccion,
-    asociado_fechareg:fecha.value
+    asociado_fechareg:fecha.value,
+    estado:0
   }
 
   if(newSocio.nombre_negocio === '' || newSocio.nombre_representante === '' || newSocio.cedula_representante === '' || newSocio.telefono === '' || numeroCalle.value === '' || newSocio.asociado_fechareg === '' || calle.value === '' || sector.value === ''){
@@ -61,6 +62,9 @@ function regSocio() {
         icon:'success',
         timer:5000
        })
+       
+       ipc.send("reqAsociadosData")
+
 
     }else{
       Swal.fire({

@@ -69,6 +69,9 @@ function regAsociacion() {
       icon:'success',
       timer:5000
      })
+     
+     ipc.send("reqAsociadosData")
+
   }
 
 }
@@ -76,5 +79,5 @@ function regAsociacion() {
 btnRegistrar.addEventListener('click',(e)=>{
   e.preventDefault()
   regAsociacion()
-  ipc.send('sendAsigData')
+  ipc.send('reqAsociadosData')
 })

@@ -57,6 +57,7 @@ function regEquipo() {
         modelo.value = ''
         fecha.value = ''
 
+        ipc.send("reqAsociadosData")
       }
     })
 

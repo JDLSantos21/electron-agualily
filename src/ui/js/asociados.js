@@ -1,4 +1,5 @@
 const sbAsociadosBtn = document.getElementById("sbAsociadosBtn")
+const detalleSocios = document.getElementById('detalleSocios')
 
 sbAsociadosBtn.addEventListener('click',()=>{
 
@@ -24,10 +25,6 @@ if(localStorage.getItem('sociosPage-activa') === 'true'){
 }else{
   asociadosContainer.classList.remove('containerDesplegado')
 }
-
-
-const detalleSocios = document.getElementById('detalleSocios')
-
 
 const swapSocios = document.getElementById('swapBtn-socios')
 const swapEquipos = document.getElementById('swapBtn-equipos')
@@ -66,12 +63,16 @@ swapEquipos.addEventListener('click',()=>{
 
 const listaSocios = document.getElementById('listaSocios')
 const listaEquipos = document.getElementById('listaEquipos')
+arregloSocios = []
+arregloEquipos = []
 
 ipc.on('allSociosData',async (event,allSocios)=>{
 
   let showSocio ='';
 
   allSocios.map((socio)=>{
+
+    arregloSocios.push(socio)
 
     showSocio += `
     
@@ -83,6 +84,7 @@ ipc.on('allSociosData',async (event,allSocios)=>{
   })
 
   listaSocios.innerHTML = showSocio;
+  selectItemSocio()
 
 })
 
@@ -91,6 +93,8 @@ ipc.on('allEquiposData',async (event,allEquipos)=>{
   let showEquipo ='';
 
   allEquipos.map((equipo)=>{
+
+    arregloEquipos.push(equipo)
 
     showEquipo += `
     
@@ -120,4 +124,29 @@ asigEquipoBtn.addEventListener("click",()=>{
 })
 
 
-   
+// INTERVALO PARA QUE SE PUEDA DETECTAR LOS ITEMS-SOCIOS
+
+async function selectItemSocio() {
+  
+  const itemSocios = document.querySelectorAll('.item-socio')
+  
+  for (let i = 0; i < itemSocios.length; i++) {
+      itemSocios[i].addEventListener('click',()=>{
+
+        detalleSocios.classList.add('show-ventana')
+
+      })
+  }
+
+  await showSelectItemSociosData()
+  console.log('entro el setout')
+  
+} 
+
+if(asociadosContainer.classList.contains('containerDesplegado')){
+  ipc.send('reqAsociadosData')
+}
+
+function getShowSelectItemSociosData() {
+  return showSelectItemSociosData();
+}

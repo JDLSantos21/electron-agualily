@@ -12,6 +12,10 @@
   justify-content: space-between;
 }
 
+.bold{
+  font-weight: bold;
+}
+
 .blackout{
   height:calc(100vh - 35px);
   width: calc(100vw - 70px);
@@ -109,6 +113,21 @@
 
 /* VENTANA DE DETALLE DE SOCIOS */
 
+.closeBtnSocios{
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size:26px;
+  color:red;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.closeBtnSocios:hover{
+  color:rgb(199, 2, 2);
+}
+
 .asociados-socios--container{
   width:100%;
   height:calc(100% - 90px);
@@ -117,6 +136,161 @@
   bottom:0;
   display:none;
 }
+
+.show-ventana {
+  display: block;
+}
+
+/* seccion del titulo */
+
+.negocio-title--container{
+  width:100%;
+  height:15%;
+  text-align: center;
+  position: relative;
+} 
+
+.negocio-title{
+  margin:0;
+  font-weight:600;
+  padding-top:15px;
+  text-decoration: underline;
+  font-size:26px;
+}
+
+.fecha-unionSocio{
+  position: absolute;
+  bottom: 0rem;
+  right: 1rem;
+  margin:0;
+}
+
+/* seccion de la informacion general */
+
+.socios-generalInfo--container{
+  width:100%;
+  height:50%;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  align-items:center;
+}
+
+.general-info--item{
+  margin:0;
+  /* margin-top:3rem; */
+  font-weight:600;
+  /* text-align:center; */
+}
+
+.general-info--item span{
+  text-decoration:underline;
+  font-weight: normal;
+}
+
+
+/* seccion del recuadro del equipo asociado */
+
+.info-equipoAsociado--container{
+  width:100%;
+  height:35%;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.equipoAsociado-content{
+  width:85%;
+  height: 80%;
+  background-color: #f1f1f1;
+  border-radius:3px;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.267);
+}
+
+.withoutEquipo{
+  text-align: center;
+}
+
+.EA-btnAsociar{
+  border:none;
+  background-color: #2a6dfc;
+  color: #fff;
+  padding:10px 20px;
+  border-radius: 3px;
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.185);
+  transition: 0.3s;
+}
+
+.EA-btnAsociar:hover{
+  background-color: #235dd8;
+}
+
+.equipoAsociado{
+  /* font-weight: bold; */
+  font-size:18px;
+  grid-column: 1 / 3;
+  text-align: center;
+  text-shadow: 1px 0 2px rgba(0, 0, 0, 0.256);
+}
+
+.equipoData-subBox{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f6f7;
+  margin:10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.280);
+  border-radius:2px;
+}
+
+.equipoData-subBox p{
+  text-shadow:1px 0px 2px rgba(0, 0, 0, 0.238);
+}
+
+.subBox-equipoDetalle{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  text-align: center;
+}
+
+.equipoAsociado-content-1{
+  width:85%;
+  height: 80%;
+  background-color: #f1f1f1;
+  border-radius:3px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.267);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows:15% 85%;
+}
+
+.equipoData-subBox--actions{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.subBox-btn{
+  border: 1px solid rgb(227, 227, 227);
+  border-radius:3px;
+  background-color: #3c77f5;
+  color: #fff;
+  padding:10px 20px;
+  transition: 0.3s;
+}
+
+.subBox-actions-verDetalles:hover,.subBox-actions-cambiar:hover{
+  background-color: #2661e0;
+}
+
 
 
 /*//////////////////////// LISTA DE DATOS  ////////////////////*/
@@ -273,4 +447,3 @@
   color:#000;
   margin:0;
 }
-

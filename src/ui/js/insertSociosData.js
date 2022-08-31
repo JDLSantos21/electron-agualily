@@ -21,9 +21,9 @@ const showSelectItemSociosData = async function () {
         const socio = arregloSocios.filter(s => s.id_asociado == id)
         const equipo = arregloEquipos.filter(e => e.id_equipo == socio[0].equipo_asociado)
         let fechaSocio = moment(socio[0].asociado_fechareg,'')
-        console.log(socio)
-        console.log(equipo)
-
+        // console.log(socio)
+        // console.log(equipo)
+        
         detalleSocios.innerHTML = `
         <i class="fa-solid fa-xmark closeBtnSocios" id="closeDetalleSocios"></i>
 
@@ -71,8 +71,14 @@ const showSelectItemSociosData = async function () {
       
       showDataSocios(contID.ID)
 
+      const botonAsociarEquipo = document.querySelector(".EA-btnAsociar");
+        botonAsociarEquipo.addEventListener("click",()=>{
+          ipc.send("openAsigEquipoWin")
+      })
+
     })
 
   }
-  
+
 }
+

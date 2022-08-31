@@ -66,46 +66,86 @@ const listaEquipos = document.getElementById('listaEquipos')
 arregloSocios = []
 arregloEquipos = []
 
+
 ipc.on('allSociosData',async (event,allSocios)=>{
+  
+  const filtrarSocio = document.getElementById("searchSocios")
 
-  let showSocio ='';
+    const filtrar =()=>{
 
-  allSocios.map((socio)=>{
+      let userSocio = filtrarSocio.value.toLowerCase();
 
-    arregloSocios.push(socio)
-
-    showSocio += `
-    
-    <div class="item-socio" id="${socio.id_asociado}">
-      <p class="socio-name">${socio.nombre_negocio}</p>
-    </div>
-    
-    `
-  })
-
-  listaSocios.innerHTML = showSocio;
-  selectItemSocio()
-
+      listaSocios.innerHTML = ""
+      
+      for (const socio of allSocios) {
+        arregloSocios.push(socio)
+        let nombreSocio = socio.nombre_negocio.toLowerCase();
+        
+        if(nombreSocio.indexOf(userSocio) !== -1){
+          listaSocios.innerHTML += `
+              <div class="item-socio" id="${socio.id_asociado}">
+                <p class="socio-name">${socio.nombre_negocio}</p>
+              </div>
+             `
+            }
+            selectItemSocio()
+          }
+          if(listaSocios.innerHTML === ""){
+            listaSocios.innerHTML = `<p>Socio no encontrado...</p>`
+          }
+      }
+      filtrarSocio.addEventListener("keyup",filtrar)
+      filtrar()
 })
 
 ipc.on('allEquiposData',async (event,allEquipos)=>{
 
-  let showEquipo ='';
+  const filtrarEquipos = document.getElementById("searchEquipos")
 
-  allEquipos.map((equipo)=>{
+  const filtrar =()=>{
 
-    arregloEquipos.push(equipo)
+    let userEquipo = filtrarEquipos.value.toLowerCase();
 
-    showEquipo += `
+    listaEquipos.innerHTML = ""
     
-    <div class="item-socio" id="${equipo.id_equipo}">
-      <p class="socio-name">${equipo.id_equipo} - ${equipo.modelo}</p>
-    </div>
-    
-    `
-  })
+    for (const equipo of allEquipos) {
+      arregloEquipos.push(equipo)
+      let nombreEquipo = equipo.id_equipo.toString();
+      
+      if(nombreEquipo.indexOf(userEquipo) !== -1){
+        listaEquipos.innerHTML += `
+            <div class="item-equipo" id="${equipo.id_equipo}">
+              <p class="socio-name">${equipo.id_equipo} - ${equipo.modelo}</p>
+            </div>
+           `
+          }
+          selectItemSocio()
+        }
+        if(listaEquipos.innerHTML === ""){
+          listaEquipos.innerHTML = `<p>Equipo no encontrado...</p>`
+        }
+    }
+    filtrarEquipos.addEventListener("keyup",filtrar)
+    filtrar()
 
-  listaEquipos.innerHTML = showEquipo;
+
+
+  // let showEquipo ='';
+
+  // allEquipos.map((equipo)=>{
+
+  //   arregloEquipos.push(equipo)
+
+  //   showEquipo += `
+    
+  //   <div class="item-socio" id="${equipo.id_equipo}">
+  //     <p class="socio-name">${equipo.id_equipo} - ${equipo.modelo}</p>
+  //   </div>
+    
+  //   `
+  // })
+
+  // listaEquipos.innerHTML = showEquipo;
 
 })
 
@@ -150,3 +190,5 @@ if(asociadosContainer.classList.contains('containerDesplegado')){
 function getShowSelectItemSociosData() {
   return showSelectItemSociosData();
 }
+
+

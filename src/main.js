@@ -3,7 +3,6 @@ const { Connection } = require('promise-mysql');
 const {getConnection} = require('./database');
 
 ipc = ipcMain
-
 /*----------INSERTAR DATOS COMBUSTIBLE---------*/
 
 ipc.handle("add",(event,obj)=>{
@@ -390,6 +389,8 @@ ipc.handle('addNewAsociacion',async(event,asignacion)=>{
 
 let window 
 let child
+
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 function createWindow() {
 

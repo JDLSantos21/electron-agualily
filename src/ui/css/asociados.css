@@ -137,6 +137,10 @@
   display:none;
 }
 
+.detalle2{
+  z-index:100;
+}
+
 .show-ventana {
   display: block;
 }

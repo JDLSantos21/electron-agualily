@@ -82,3 +82,55 @@ const showSelectItemSociosData = async function () {
 
 }
 
+const showSelectItemEquiposData = async function () {
+
+  const todosEquipos = document.querySelectorAll('.item-equipo')
+
+  for (let i = 0; i < todosEquipos.length; i++) {
+    
+    todosEquipos[i].addEventListener('click',()=>{
+      let id_equipos = todosEquipos[i].id;
+      let id_equipo = id_equipos;
+      const contID = {
+        ID:id_equipo
+      }
+
+      function showDataEquipos(id) {
+
+        const equipo = arregloEquipos.filter(e => e.id_equipo == id)[0]
+        console.log(equipo)
+        const socio = arregloSocios.filter(s => s.equipo_asociado == id)
+        let fechaEquipo = moment(equipo.equipo_fechareg,'')
+        
+        detalleEquipos.innerHTML = `
+        <i class="fa-solid fa-xmark closeBtnSocios" id="closeDetalleEquipos"></i>
+  
+        <h1>Este es el equipo ${equipo.modelo}</h1>
+
+        `;
+
+        document.getElementById('closeDetalleEquipos').addEventListener('click',()=>{
+          detalleEquipos.classList.remove('show-ventana')
+        })
+
+      }
+      
+      showDataEquipos(contID.ID)
+
+      // const equipo = arregloSocios.filter(s => s.id_asociado == contID.ID)[0]
+
+      // if(equipo.estado === 0){
+      //   const botonAsociarEquipo = document.querySelector(".EA-btnAsociar");
+      //   botonAsociarEquipo.addEventListener("click",()=>{
+      //     ipc.send("openAsigEquipoWin")
+      //   })
+      // }else{
+      //   const btnSeeDetails = document.querySelector('.subBox-actions-verDetalles')
+      //   const btnCambiarEquipo = document.querySelector('.subBox-actions-cambiar')
+      // }
+
+    })
+
+  }
+
+}

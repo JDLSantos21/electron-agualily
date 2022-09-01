@@ -1,5 +1,6 @@
 const sbAsociadosBtn = document.getElementById("sbAsociadosBtn")
 const detalleSocios = document.getElementById('detalleSocios')
+const detalleEquipos = document.getElementById('detalleEquipos')
 
 sbAsociadosBtn.addEventListener('click',()=>{
 
@@ -120,6 +121,7 @@ ipc.on('allEquiposData',async (event,allEquipos)=>{
            `
           }
           selectItemSocio()
+          selectItemEquipo()
         }
         if(listaEquipos.innerHTML === ""){
           listaEquipos.innerHTML = `<p>Equipo no encontrado...</p>`
@@ -174,6 +176,7 @@ async function selectItemSocio() {
       itemSocios[i].addEventListener('click',()=>{
 
         detalleSocios.classList.add('show-ventana')
+        detalleEquipos.classList.remove('show-ventana')
 
       })
   }
@@ -182,6 +185,24 @@ async function selectItemSocio() {
   console.log('entro el setout')
   
 } 
+
+async function selectItemEquipo() {
+  
+  const itemEquipos = document.querySelectorAll('.item-equipo')
+  
+  for (let i = 0; i < itemEquipos.length; i++) {
+      itemEquipos[i].addEventListener('click',()=>{
+
+        detalleEquipos.classList.add('show-ventana')
+        detalleSocios.classList.remove('show-ventana')
+      })
+  }
+
+  await showSelectItemEquiposData()
+  console.log('entro el setout equipos')
+  
+} 
+
 
 if(asociadosContainer.classList.contains('containerDesplegado')){
   ipc.send('reqAsociadosData')

@@ -100,12 +100,45 @@ const showSelectItemEquiposData = async function () {
         const equipo = arregloEquipos.filter(e => e.id_equipo == id)[0]
         console.log(equipo)
         const socio = arregloSocios.filter(s => s.equipo_asociado == id)
-        let fechaEquipo = moment(equipo.equipo_fechareg,'')
+        let fechaEquipo = moment(equipo.equipo_fechareg)
         
         detalleEquipos.innerHTML = `
         <i class="fa-solid fa-xmark closeBtnSocios" id="closeDetalleEquipos"></i>
-  
-        <h1>Este es el equipo ${equipo.modelo}</h1>
+
+        <div class="title-equipo--container">
+           <h1 class="equipo-title">Detalles del equipo</h1>
+        </div>
+
+        <div class="equipo-info--detalleEquipos">
+          <p class="item-detalleEquipo">ID único: <span class="equipo-info--DE-data">${equipo.id_equipo}</span></p>
+          <p class="item-detalleEquipo">Tipo: <span class="equipo-info--DE-data">${equipo.tipo_equipo == 1001 ? 'Nevera' : 'Anaquel'}</span></p>
+          <p class="item-detalleEquipo">Modelo: <span class="equipo-info--DE-data">${equipo.modelo}</span></p>
+          <p class="item-detalleEquipo">Serial: <span class="equipo-info--DE-data">${equipo.serial}</span></p>
+          <p class="item-detalleEquipo">Fecha de Registro: <span class="equipo-info--DE-data">${fechaEquipo.format('dddd Do MMMM YYYY')}</span></p>
+        </div>
+
+        <div class="detalleEquipos--moves">
+          <div class="table-moves--equipos">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">ID #</th>
+                  <th scope="col">Acción</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">11029</th>
+                  <td>Cambio de Equipo</td>
+                  <td>Se le cambio el compresor a 2092019029</td>
+                  <td>20/20/2000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
         `;
 

@@ -386,6 +386,15 @@ ipc.handle('addNewAsociacion',async(event,asignacion)=>{
 
 })
 
+// mandando datos de movimientos
+
+ipc.on('sendMovesData',async()=>{
+  const conn = await getConnection();
+  conn.query('SELECT * FROM equipo_moves',(error,moves,fields)=>{
+    window.webContents.send('dataMovesEquipos',moves)
+  })
+})
+
 
 let window 
 let child

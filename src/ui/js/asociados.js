@@ -191,15 +191,22 @@ async function selectItemEquipo() {
   const itemEquipos = document.querySelectorAll('.item-equipo')
   
   for (let i = 0; i < itemEquipos.length; i++) {
-      itemEquipos[i].addEventListener('click',()=>{
+      itemEquipos[i].addEventListener('click',async()=>{
 
         detalleEquipos.classList.add('show-ventana')
         detalleSocios.classList.remove('show-ventana')
+
+        ipc.send('sendMovesData')
+
       })
+
+        ipc.on('dataMovesEquipos',async(event,moves)=>{
+          console.log(moves)
+        })
+
   }
 
   await showSelectItemEquiposData()
-  console.log('entro el setout equipos')
   
 } 
 
@@ -208,8 +215,5 @@ if(asociadosContainer.classList.contains('containerDesplegado')){
   ipc.send('reqAsociadosData')
 }
 
-function getShowSelectItemSociosData() {
-  return showSelectItemSociosData();
-}
 
 

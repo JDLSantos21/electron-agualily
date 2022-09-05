@@ -24,5 +24,4 @@ siderBarLinks.forEach((allLinks, i)=>{
     siderBarLinks[i].style.background = "#E6F3FF"
     siderBarLinks[i].style.color = "#0d6efd"
   })
-
 })

@@ -11,7 +11,6 @@ const btnRegistrar = document.getElementById('btnRegistrar')
 
 function regEquipo() {
   let newEquipo = {
-    id_equipo: '',
     tipo_equipo:tipoEquipo.value,
     serial:serial.value,
     modelo:modelo.value,

@@ -116,7 +116,7 @@ ipc.on('allEquiposData',async (event,allEquipos)=>{
       if(nombreEquipo.indexOf(userEquipo) !== -1){
         listaEquipos.innerHTML += `
             <div class="item-equipo" id="${equipo.id_equipo}">
-              <p class="socio-name">${equipo.id_equipo} - ${equipo.modelo}</p>
+              <p class="socio-name">${equipo.tipo_equipo == 1001 ? "Nevera" : "Anaquel"} ${equipo.modelo}</p>
             </div>
            `
           }
@@ -186,6 +186,9 @@ async function selectItemSocio() {
   
 } 
 
+
+let arregloMoves = []
+
 async function selectItemEquipo() {
   
   const itemEquipos = document.querySelectorAll('.item-equipo')
@@ -195,14 +198,7 @@ async function selectItemEquipo() {
 
         detalleEquipos.classList.add('show-ventana')
         detalleSocios.classList.remove('show-ventana')
-
-        ipc.send('sendMovesData')
-
-      })
-
-        ipc.on('dataMovesEquipos',async(event,moves)=>{
-          console.log(moves)
-        })
+      })   
 
   }
 
@@ -210,9 +206,14 @@ async function selectItemEquipo() {
   
 } 
 
-
 if(asociadosContainer.classList.contains('containerDesplegado')){
   ipc.send('reqAsociadosData')
+  ipc.send('sendMovesData')
+  ipc.on('dataMovesEquipos',async(event,moves)=>{
+    moves.forEach(move => {
+      arregloMoves.push(move)
+    });
+  })
 }
 
 

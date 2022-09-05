@@ -160,6 +160,7 @@
   padding-top:15px;
   text-decoration: underline;
   font-size:26px;
+  text-transform: uppercase;
 }
 
 .fecha-unionSocio{
@@ -188,7 +189,7 @@
 }
 
 .general-info--item span{
-  text-decoration:underline;
+  /* text-decoration:underline; */
   font-weight: normal;
 }
 
@@ -291,8 +292,16 @@
   transition: 0.3s;
 }
 
-.subBox-actions-verDetalles:hover,.subBox-actions-cambiar:hover{
+.subBox-actions-verDetalles:hover{
   background-color: #2661e0;
+}
+
+.subBox-actions-delete{
+  background-color: rgb(221, 32, 32);
+}
+
+.subBox-actions-delete:hover{
+  background-color: rgb(176, 31, 31);
 }
 
 /* DETALLE EQUIPOS */
@@ -309,10 +318,11 @@
 
 .equipo-title{
   color: #000;
-  text-shadow: 1px 1px 3px #000;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.337);
   text-transform: uppercase;
   font-size:26px;
   margin:0;
+  font-weight: bold;
 }
 
 /* datos del equipo */
@@ -352,10 +362,13 @@
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.267);
   background-color: #ffff;
   overflow-y: scroll;
+  /* box-shadow: inset 0px 0px 0px 5px #3172eb; */
+  border:5px solid #3172eb;
+  border-right:0;
 }
 
 .table-moves--equipos::-webkit-scrollbar{
-  background-color: #ebebebf1;
+  background-color: #3172eb;
   width:5px;
 }
 
@@ -366,7 +379,12 @@
 .table-moves--equipos thead{
   position: sticky;
   top:0;
-  background-color: #ebebeb;
+  background-color: #3172eb;
+  color: #fff;
+}
+
+.trDontMove{
+  font-weight:600;
 }
 
 /*//////////////////////// LISTA DE DATOS  ////////////////////*/

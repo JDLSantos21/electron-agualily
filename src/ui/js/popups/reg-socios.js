@@ -15,10 +15,9 @@ function validateDominicanId(t){if("string"!=typeof t)return!1;if(t=t.trim(),!/^
 
 function regSocio() {
 
-  let direccion = `${calle.value} No.${numeroCalle.value}, ${sector.value}.`
+  let direccion = `Calle ${calle.value} No. ${numeroCalle.value}, ${sector.value}.`
   
   let newSocio = {
-    id_asociado:'',
     nombre_negocio:negocioName.value,
     nombre_representante:representanteName.value,
     cedula_representante:cedula.value,

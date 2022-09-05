@@ -395,6 +395,13 @@ ipc.on('sendMovesData',async()=>{
   })
 })
 
+// desligando equipo de socio
+
+ipc.handle("desligarEquipo",async(event,socio)=>{
+  const conn = await getConnection();
+  conn.query(`UPDATE socios SET equipo_asociado = null,estado = 0 WHERE id_asociado = ${socio.id_socio}`)
+  conn.query(`UPDATE equipos SET estado = 0 WHERE id_equipo = ${socio.id_equipo}`)
+})
 
 let window 
 let child

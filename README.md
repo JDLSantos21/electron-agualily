@@ -62,13 +62,31 @@ This section covers the area of products that are shipped, thus ending the other
 
 In the development of this section I have used SweetAlert2 for the alerts, when validating the data an alert is triggered telling the user in which area the error is, thus prohibiting failures in the insertion of data.
 
+**<p align="center"> PLAY THE VIDEO </p>**
+
 https://user-images.githubusercontent.com/79732142/189143858-ea35bff1-43f9-4958-94bd-5ab580dbf735.mp4
 
-<video width="320" height="240">
-  <source src="https://user-images.githubusercontent.com/79732142/189143858-ea35bff1-43f9-4958-94bd-5ab580dbf735.mp4" type="video/mp4">
-</video>
+## Associates & Equipment Provided
+This section is to be able to keep track of the equipment that the company has provided to customers, associating the equipment with its serial number and model. All this to have greater control over who this equipment is given to and carry out different maintenance depending on the client and when a problem arises, record keeping a record of this equipment.
+
+This is kept in a physical file and was very disorganized, now with this system it will be possible to see it in a more practical and simple way.
+
+![SociosPr](https://user-images.githubusercontent.com/79732142/189156184-43a26e18-f8c9-444e-9f3a-f5aa983e0bdb.gif)
+
+### Data Records
+- **Partner registration**
+
+Here all the data is validated, in the case of the ID, it will not be allowed to enter an invalid ID, this with a function that filters and reveals if it is a false ID or not.
+
+- **Equipment registration**
+
+When registering an equipment apart from the validation of the mandatory data, it will also be validated if the entered serial exists or not, since it must be unique.
+
+- **Equipment Assignment**
+
+In the assign team section, only partners and teams that do not currently have an association will be displayed.
 
 
-
+<img src="https://user-images.githubusercontent.com/79732142/189158393-d302f9bc-de86-4851-88ad-b6155b382638.gif" alt="electron" width="330"/> <img src="https://user-images.githubusercontent.com/79732142/189162889-f9940413-e006-4e4a-b0ae-777057e29c4f.gif" alt="electron" width="330"/> <img src="https://user-images.githubusercontent.com/79732142/189164182-2a1a7d98-b33f-4194-9fc8-0982d10c7cbe.gif" alt="electron" width="330"/>
 
 ### I'm currently documenting the app, please come back in a few hours... 😊😊👌

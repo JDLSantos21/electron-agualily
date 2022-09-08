@@ -37,4 +37,38 @@ Alerts Example
 
 ![Alerts Example](https://user-images.githubusercontent.com/79732142/189028600-26d41e7c-3b6d-41dc-a1d5-100a72225f57.png)
 
+## REPORTS SECTION
+This section records all the incidents of the company, mainly in the dispatch area. I did this because the highest-ranking people wanted to keep a more organized control of the problems and how they were resolved and who would take care of this.
+
+**<p align="center"> Graphic interface</p>**
+Here are the functionalities of registering and consulting these incidents and below a summary of the current situation, showing statistics with ChartJS:
+
+- Current status of tickets, percentage of open and resolved ones.
+- Ticket resolution time depending on its severity.
+- Tickets assigned to each person, which ones have been resolved and which ones are currently active.
+
+![image](https://user-images.githubusercontent.com/79732142/189130651-0fee7841-464d-4222-b1f1-c0a0fc1f44cb.png)
+
+#### Register Report
+
+![RegIncidencia](https://user-images.githubusercontent.com/79732142/189137362-940b0223-f881-415c-bb1e-5e70e036926a.gif)
+
+#### Show registered reports
+
+![showReports](https://user-images.githubusercontent.com/79732142/189139371-dee447a1-1348-41ca-a4eb-ef34e3913b44.gif)
+
+## Product shipping and delivery area
+This section covers the area of products that are shipped, thus ending the other with what was done on paper by hand. With this implementation it is no longer necessary to have to keep track of paperwork since now the data goes directly to the cashier area.
+
+In the development of this section I have used SweetAlert2 for the alerts, when validating the data an alert is triggered telling the user in which area the error is, thus prohibiting failures in the insertion of data.
+
+https://user-images.githubusercontent.com/79732142/189143858-ea35bff1-43f9-4958-94bd-5ab580dbf735.mp4
+
+<video width="320" height="240">
+  <source src="https://user-images.githubusercontent.com/79732142/189143858-ea35bff1-43f9-4958-94bd-5ab580dbf735.mp4" type="video/mp4">
+</video>
+
+
+
+
 ### I'm currently documenting the app, please come back in a few hours... 😊😊👌

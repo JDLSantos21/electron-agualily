@@ -25,6 +25,7 @@ sidebarCombustible.addEventListener('click',()=>{
   localStorage.setItem('IncPage-activa','false');
   localStorage.setItem('despPage-activa','false');
   localStorage.setItem('sociosPage-activa','false');
+  localStorage.setItem("seccion","combustible")
 })
 
 RegCombustible.addEventListener('click',(e)=>{

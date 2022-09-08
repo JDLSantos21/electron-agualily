@@ -85,8 +85,8 @@ function showDataSocios(id) {
 
     <div class="socios-generalInfo--container">
       <p class="general-info--item">PROPIETARIO Y/O REPRESENTANTE: <span id="itemSociosName" class="itemSocios">${socio[0].nombre_representante}</span></p>
-      <p class="general-info--item">CÉDULA REPRESENTANTE: <span id="itemSociosCedula" class="itemSocios">${socio[0].cedula_representante}</span></p>
-      <p class="general-info--item">TELÉFONO: <span id="itemSociosTel" class="itemSocios">${socio[0].telefono}</span></p>
+      <p class="general-info--item">CÉDULA REPRESENTANTE: <span id="itemSociosCedula" class="itemSocios">${socio[0].cedula_representante.slice(0,3)}-${socio[0].cedula_representante.slice(3,10)}-${socio[0].cedula_representante.slice(10,11)}</span></p>
+      <p class="general-info--item">TELÉFONO: <span id="itemSociosTel" class="itemSocios">${socio[0].telefono.slice(0,3)}-${socio[0].telefono.slice(3,6)}-${socio[0].telefono.slice(6,10)}</span></p>
       <p class="general-info--item">DIRECCIÓN: <span id="itemSociosDir" class="itemSocios">${socio[0].direccion}</span></p>
     </div>
 
@@ -161,7 +161,7 @@ const showSelectItemSociosData = async function () {
             cancelButtonColor: '#d33',
             cancelButtonText: 'Cancelar',
             confirmButtonText: 'Si, Desligar Equipo!'
-          }).then((result) => {
+          }).then(async(result) => {
             if (result.isConfirmed) {
 
               const ids = {
@@ -180,6 +180,7 @@ const showSelectItemSociosData = async function () {
                 'Ahora puedes asociar uno nuevo.',
                 'success'
               )
+              
             }
           })
 

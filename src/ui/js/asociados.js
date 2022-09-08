@@ -12,6 +12,7 @@ sbAsociadosBtn.addEventListener('click',()=>{
   blackout.classList.add('show-blackout')
   localStorage.setItem('despPage-activa','false');
   localStorage.setItem('IncPage-activa','false');
+  localStorage.setItem("seccion","socios")
 
   if(asociadosContainer.classList.contains('containerDesplegado')){
     localStorage.setItem('sociosPage-activa','true');
@@ -217,4 +218,22 @@ if(asociadosContainer.classList.contains('containerDesplegado')){
 }
 
 
+function updateArr() {
+  ipc.send('reqAsociadosData')
 
+  ipc.on('allSociosData',async (event,allSocios)=>{
+    arregloSocios = []
+    for (const socio of allSocios) {
+      arregloSocios.push(socio)
+    }
+  })
+
+  ipc.on('allEquiposData',async (event,allEquipos)=>{
+    arregloEquipos = []
+    for (const equipo of allEquipos) {
+      arregloEquipos.push(equipo)
+    }
+  })
+
+  console.log(arregloEquipos,arregloSocios)
+}

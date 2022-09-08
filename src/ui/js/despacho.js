@@ -9,6 +9,7 @@ sidebarDespacho.addEventListener('click',()=>{
   blackout.classList.add('show-blackout')
   localStorage.setItem('IncPage-activa','false');
   localStorage.setItem('sociosPage-activa','false');
+  localStorage.setItem("seccion","despacho")
 
   if(despachoContainer.classList.contains('containerDesplegado')){
     localStorage.setItem('despPage-activa','true');

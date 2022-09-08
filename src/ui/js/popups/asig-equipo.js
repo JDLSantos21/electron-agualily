@@ -80,4 +80,5 @@ btnRegistrar.addEventListener('click',(e)=>{
   e.preventDefault()
   regAsociacion()
   ipc.send('reqAsociadosData')
+  ipc.send('sendAsigData')
 })

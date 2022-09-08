@@ -25,3 +25,17 @@ siderBarLinks.forEach((allLinks, i)=>{
     siderBarLinks[i].style.color = "#0d6efd"
   })
 })
+
+if(localStorage.getItem("seccion") === "combustible"){
+  siderBarLinks[0].style.background = "#E6F3FF"
+  siderBarLinks[0].style.color = "#0d6efd"
+}else if(localStorage.getItem("seccion") === "incidencias"){
+  siderBarLinks[1].style.background = "#E6F3FF"
+  siderBarLinks[1].style.color = "#0d6efd"
+}else if(localStorage.getItem("seccion") === "despacho"){
+  siderBarLinks[2].style.background = "#E6F3FF"
+  siderBarLinks[2].style.color = "#0d6efd"
+}else if(localStorage.getItem("seccion") === "socios"){
+  siderBarLinks[3].style.background = "#E6F3FF"
+  siderBarLinks[3].style.color = "#0d6efd"
+}

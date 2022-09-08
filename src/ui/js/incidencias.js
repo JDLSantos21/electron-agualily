@@ -15,6 +15,7 @@ sbIncidenciasBtn.addEventListener('click',()=>{
   blackout.classList.add('show-blackout')
   localStorage.setItem('despPage-activa','false');
   localStorage.setItem('sociosPage-activa','false');
+  localStorage.setItem("seccion","incidencias")
 
   if(incidenciasContainer.classList.contains('showIncContainer')){
     localStorage.setItem('IncPage-activa','true');
